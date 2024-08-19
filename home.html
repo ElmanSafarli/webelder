@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/home.css" />
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="home" class="h-screen relative mx-4 sm:mx-10 block z-10">
+      <nav class="flex items-start justify-between m-[26px]">
+        <div class="nav-log"><img src="" alt="" /></div>
+        <div class="nav-items hidden md:block">
+          <ul class="flex items-center justify-center rounded-full bg-zinc-800">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Project</a></li>
+            <li><a href="#blog">Blog</a></li>
+          </ul>
+        </div>
+        <div class="nav-btn hidden md:block">
+          <a href="/contact">Contact us</a>
+        </div>
+        <div class="nav-sidebar block md:hidden"></div>
+      </nav>
+      <div class="header-content">
+        <div class="header-info">
+          <h1 class="text-white text-left md:text-center">
+            Experience the excellence of our agency services
+          </h1>
+          <p>
+            We are a digital agency dedicated to creating and growing innovative
+            digital solutions for startups and industry leaders.
+          </p>
+          <a href="#about" class="sm:flex hidden items-center justify-center">
+            <div class="arrow flex items-center justify-center rounded-full">
+              <svg
+                width="16"
+                height="32"
+                viewBox="0 0 16 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9 1C9 0.447715 8.55228 0 8 0C7.44772 0 7 0.447715 7 1L9 1ZM7.29289 31.7071C7.68342 32.0976 8.31658 32.0976 8.70711 31.7071L15.0711 25.3431C15.4616 24.9526 15.4616 24.3195 15.0711 23.9289C14.6805 23.5384 14.0474 23.5384 13.6569 23.9289L8 29.5858L2.34315 23.9289C1.95262 23.5384 1.31946 23.5384 0.928932 23.9289C0.538408 24.3195 0.538408 24.9526 0.928932 25.3431L7.29289 31.7071ZM7 1L7 31H9L9 1L7 1Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+          </a>
+          <div class="mobile-header sm:hidden flex items-center justify-start">
+            <a
+              href="#service"
+              class="text-center text-black bg-white flex items-center justify-center w-[130px] h-[36px] rounded-[18px] text-[16px] font-[600] text-[11px] font-semibold"
+              >Our services</a
+            >
+            <a
+              href="#about"
+              class="flex items-center justify-center w-[36px] h-[36px] rounded-full bg-[#3C3C3C] ml-2"
+            >
+              <svg
+                width="10"
+                height="13"
+                viewBox="0 0 10 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.6 1C5.6 0.668629 5.33137 0.4 5 0.4C4.66863 0.4 4.4 0.668629 4.4 1H5.6ZM4.57574 12.4243C4.81005 12.6586 5.18995 12.6586 5.42426 12.4243L9.24264 8.60589C9.47696 8.37157 9.47696 7.99167 9.24264 7.75736C9.00833 7.52304 8.62843 7.52304 8.39411 7.75736L5 11.1515L1.60589 7.75736C1.37157 7.52304 0.991674 7.52304 0.757359 7.75736C0.523045 7.99167 0.523045 8.37157 0.757359 8.60589L4.57574 12.4243ZM4.4 1L4.4 12H5.6L5.6 1H4.4Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="header-cubs absolute left-0 top-0">
+      <svg
+        width="206"
+        height="297"
+        viewBox="0 0 206 297"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect x="99" width="107" height="100" fill="#272727" />
+        <rect y="100" width="99" height="100" fill="#202021" />
+        <rect x="99" y="200" width="107" height="97" fill="#131313" />
+      </svg>
+    </div>
+    <div class="header-cubs absolute right-0 top-0">
+      <svg
+        width="206"
+        height="297"
+        viewBox="0 0 206 297"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="107" height="100" fill="#272727" />
+        <rect x="107" y="100" width="99" height="100" fill="#202021" />
+        <rect y="200" width="107" height="97" fill="#131313" />
+      </svg>
+    </div>
+
+    <section id="about" class="relative">
+      <div
+        class="section-name absolute left-0 top-0 sm:top-[150px] sm:translate-y-[150px] translate-y-0 py-[15px] px-[25px] sm:rotate-[-90deg] rotate-0 bg-[#191919] font-medium text-[#808383] uppercase transform origin-top-left"
+      >
+        About us
+      </div>
+      <div class="about-cubs absolute right-0 top-0">
+        <svg
+          viewBox="0 0 206 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="99" width="107" height="100" fill="#272727" />
+          <rect y="100" width="99" height="100" fill="#202021" />
+        </svg>
+      </div>
+      <div class="about-content py-[94px] z-10 block relative mx-4 sm:mx-24">
+        <h1>
+          Delivering exceptional services through
+          <span>pioneering ideas</span> that stand out from the rest
+        </h1>
+        <hr class="rounded-[1px] h-[2px] bg-[#808383] my-[24px] sm:my-[48px]" />
+        <div class="md:flex block items-center justify-between">
+          <p>
+            Our expert team includes web developers, UI/UX designers, and other
+            innovative professionals dedicated to crafting exceptional digital
+            experiences.
+          </p>
+          <a
+            href=""
+            class="flex items-center justify-center bg-white text-black font-medium rounded-[27px] w-[170px] h-[54px] gap-4"
+          >
+            Know more
+            <svg
+              width="18"
+              height="16"
+              viewBox="0 0 18 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 7C0.447715 7 0 7.44772 0 8C0 8.55228 0.447715 9 1 9V7ZM17.7071 8.70711C18.0976 8.31658 18.0976 7.68342 17.7071 7.29289L11.3431 0.928932C10.9526 0.538408 10.3195 0.538408 9.92893 0.928932C9.53841 1.31946 9.53841 1.95262 9.92893 2.34315L15.5858 8L9.92893 13.6569C9.53841 14.0474 9.53841 14.6805 9.92893 15.0711C10.3195 15.4616 10.9526 15.4616 11.3431 15.0711L17.7071 8.70711ZM1 9H17V7H1V9Z"
+                fill="black"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="service" class="relative">
+      <div
+        class="section-name absolute left-0 top-0 sm:top-[150px] sm:translate-y-[150px] translate-y-0 py-[15px] px-[25px] sm:rotate-[-90deg] rotate-0 bg-[#191919] font-medium text-[#808383] uppercase transform origin-top-left"
+      >
+        Services
+      </div>
+
+      <div class="service-content py-[94px] z-10 block relative">
+        <div
+          class="top mx-4 sm:mx-24 md:flex block items-center justify-between"
+        >
+          <h1 class="transition-all">We offer several service for you</h1>
+          <div class="flex flex-col md:mt-0 mt-[24px]">
+            <p class="transition-all">
+              The best service we offer to you and we are ready to realize the
+              ideas you give us as best as possible.
+            </p>
+            <a
+              href=""
+              class="flex items-center justify-center bg-transparent hover:bg-white hover:text-black transition-all text-white rounded-[25px] border-2 border-white w-[210px] h-[50px] mt-[26px]"
+              >Explore our Services</a
+            >
+          </div>
+        </div>
+        <div class="services-items md:flex block justify-between items-center">
+          <div class="service-left w-full">
+            <div class="service-name service-development">
+              <div class="content">
+                <span>01</span>
+                <h2>Development</h2>
+                <p>
+                  Our skilled full stack development team is prepared to blend
+                  elegant design with cutting-edge code, utilizing the latest
+                  frameworks and technologies.
+                </p>
+              </div>
+            </div>
+            <div class="service-name service-design">
+              <div class="content">
+                <span>02</span>
+                <h2>Design</h2>
+                <p>
+                  Get a unique and high-quality UI and UX Design solution for
+                  website interface and mobile applications.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="service-right mr-0 mt-[50px] md:mt-0 md:mr-24 md:block flex items-center justify-center"
+          >
+            <div class="main flex items-center justify-center">
+              <div class="back">
+                <div class="circles flex gap-1 pl-[24px] pt-[12px]">
+                  <div class=""></div>
+                  <div class=""></div>
+                  <div class=""></div>
+                </div>
+              </div>
+              <div class="bg">
+                <img src="" alt="" />
+                <a
+                  href=""
+                  class="rounded-full border-2 border-white hover:bg-black transition-all bg-[#111111] w-[84px] h-[84px] sm:w-[108px] sm:h-[108px] flex items-center justify-center"
+                >
+                  <svg
+                    width="30"
+                    height="34"
+                    viewBox="0 0 30 34"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.438262 30.7506C-0.251757 31.6131 -0.111914 32.8717 0.75061 33.5617C1.61313 34.2518 2.87172 34.1119 3.56174 33.2494L0.438262 30.7506ZM27.9878 1.77913C27.8658 0.681321 26.877 -0.109749 25.7791 0.0122295L7.88923 2C6.79142 2.12198 6.00034 3.11082 6.12232 4.20863C6.2443 5.30644 7.23314 6.09751 8.33096 5.97553L24.2331 4.20863L26 20.1108C26.122 21.2086 27.1108 21.9997 28.2086 21.8777C29.3064 21.7557 30.0975 20.7669 29.9755 19.669L27.9878 1.77913ZM3.56174 33.2494L27.5617 3.24939L24.4383 0.750608L0.438262 30.7506L3.56174 33.2494Z"
+                      fill="white"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project" class="relative">
+      <div
+        class="section-name absolute left-0 top-0 sm:top-[150px] sm:translate-y-[150px] translate-y-0 py-[15px] px-[25px] sm:rotate-[-90deg] rotate-0 bg-[#191919] font-medium text-[#808383] uppercase transform origin-top-left"
+      >
+        Our projects
+      </div>
+      <h1
+        class="text-white font-medium text-[20px] sm:text-[60px] transition-all w-full max-w-[680px] mx-4 sm:mx-24 pt-[94px]"
+      >
+        We invite you to explore our projects
+      </h1>
+      <div
+        class="best-projects mx-4 sm:mx-24 grid grid-cols-1 sm:grid-cols-2 mt-[46px] sm:gap-[104px] gap-[24px]"
+      >
+        <article class="sm:mt-[60px] mt-0">
+          <div class="image"><img src="" alt="" /></div>
+          <div class="info">
+            <h3>Example Name Website</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="item-bottom">
+              <div class="technology flex sm:gap-[10px] gap-[6px]">
+                <div>Mobile app</div>
+                <div>UX/UI</div>
+              </div>
+              <a href="">View detail</a>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="image"><img src="" alt="" /></div>
+          <div class="info">
+            <h3>Example Name Website</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="item-bottom">
+              <div class="technology flex sm:gap-[10px] gap-[6px]">
+                <div>Mobile app</div>
+                <div>UX/UI</div>
+              </div>
+              <a href="">View detail</a>
+            </div>
+          </div>
+        </article>
+        <article class="sm:mt-[60px] mt-0">
+          <div class="image"><img src="" alt="" /></div>
+          <div class="info">
+            <h3>Example Name Website</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="item-bottom">
+              <div class="technology flex sm:gap-[10px] gap-[6px]">
+                <div>Mobile app</div>
+                <div>UX/UI</div>
+              </div>
+              <a href="">View detail</a>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="image"><img src="" alt="" /></div>
+          <div class="info">
+            <h3>Example Name Website</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <div class="item-bottom">
+              <div class="technology flex sm:gap-[10px] gap-[6px]">
+                <div>Mobile app</div>
+                <div>UX/UI</div>
+              </div>
+              <a href="">View detail</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="relative mx-4 sm:mx-24 py-[110px]">
+      <h1
+        class="font-medium text-white sm:text-[60px] text-[20px] text-center m-auto"
+      >
+        Create something awesome and extraordinary with us
+      </h1>
+      <p class="font-medium text-center text-[12px] sm:text-[18px]">
+        With a lot of creativity, we can make your dream come true
+      </p>
+      <a
+        href=""
+        class="bg-white rounded-[22px] text-black w-[132px] h-[44px] flex items-center justify-center text-[15px] font-medium m-auto"
+        >Contact us</a
+      >
+    </section>
+
+    <footer>
+      <div class="footer py-[118px] mx-4 sm:mx-24">
+        <div class="footer-top flex items-start justify-between">
+          <div class="footer-logo"><img src="" alt="" /></div>
+          <div class="footer-links flex items-start gap-[116px]">
+            <div class="footer-link">
+              <h3 class="font-medium text-[18px] text-white mb-[26px]">
+                Company
+              </h3>
+              <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Our Team</a></li>
+                <li><a href="">Projects</a></li>
+                <li><a href="">Services</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="w-full bg-[#151515] rounded-[4px] h-[5px] my-[46px]" />
+        <div
+          class="footer-bottom text-[14px] text-[#808383] font-medium text-right"
+        >
+          ©2024 SmokeWeb. All right reserved
+        </div>
+      </div>
+    </footer>
+
+    <script src="app/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,464 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--black);
+    overflow-x: hidden;
+}
+
+:root {
+    --black: #000;
+    --white: #fff;
+    --dark_grey: #1A1A1A;
+    --grey: #808383;
+    --load_bg: #d9d9d9;
+
+    --raleway: "Raleway", sans-serif;
+    --poppins: "Poppins", sans-serif;
+}
+
+.bg-zinc-800 {
+    background-color: var(--dark_grey) !important;
+}
+
+/* Navabr */
+.nav-items ul {
+    padding: 8px;
+}
+
+.nav-items ul li a {
+    font-family: var(--raleway);
+    font-weight: 500;
+    padding: 12px 20px;
+    display: block;
+    border-radius: 29px;
+    color: var(--grey);
+    margin-right: 8px;
+    border: 2px solid transparent;
+    transition: 0.3s all;
+}
+
+.nav-items ul li a:hover,
+.nav-items ul li a.active {
+    color: var(--white);
+    background-color: #3C3C3C;
+    border: 2px solid #585858;
+}
+
+.nav-btn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--raleway);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 30px;
+    color: var(--black);
+    background-color: var(--white);
+}
+
+
+/* Header */
+.header-content .header-info h1 {
+    font-family: var(--raleway);
+    font-weight: 600;
+    font-size: 76px;
+    margin: auto;
+    max-width: 974px;
+    width: 974px;
+    transition: 0.3s all;
+}
+
+.header-content .header-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header-content .header-info p {
+    font-family: var(--raleway);
+    color: var(--grey);
+    margin: 38px auto;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    max-width: 618px;
+    width: 100%;
+}
+
+.header-content .header-info a .arrow {
+    width: 98px;
+    height: 98px;
+    border: 2px solid var(--white);
+    background-color: rgba(56, 53, 54, 0.68);
+}
+
+/* About */
+.about-content h1 {
+    font-weight: 500;
+    font-size: 61px;
+    color: var(--white);
+    line-height: 125%;
+    max-width: 1224px;
+    width: 100%;
+    transition: 0.3s all;
+}
+
+.about-content h1 span {
+    background: #102d91;
+}
+
+.about-content p {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--grey);
+    max-width: 580px;
+    width: 80%;
+}
+
+.about-cubs {
+    width: 206px;
+    height: 200px;
+}
+
+.about-cubs svg {
+    width: 100%;
+}
+
+/* Services */
+.service-content .top h1 {
+    font-weight: 500;
+    font-size: 61px;
+    color: #fff;
+    width: 100%;
+    max-width: 520px;
+}
+
+.service-content .top p {
+    font-weight: 500;
+    color: var(--grey);
+    max-width: 474px;
+    width: 100%;
+}
+
+.services-items {
+    margin-top: 56px;
+}
+
+.services-items .service-left .service-name {
+    padding: 38px 98px;
+    background: transparent;
+}
+
+.services-items .service-left .service-name:hover {
+    background: linear-gradient(90deg, #1e1e1e 0%, #0f0f0f 100%);
+}
+
+.services-items .service-left .service-name .content {
+    position: relative;
+    transition: left 0.5s ease;
+    left: 0;
+}
+
+.services-items .service-left .service-name:hover .content {
+    left: 42px;
+}
+
+.services-items .service-left .service-name .content span {
+    font-weight: 500;
+    font-size: 26px;
+    color: var(--grey);
+}
+
+.services-items .service-left .service-name .content h2 {
+    font-weight: 400;
+    font-size: 30px;
+    margin: 8px 0;
+    color: var(--white);
+}
+
+.services-items .service-left .service-name .content p {
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--grey);
+    width: 100%;
+    max-width: 432px;
+}
+
+.services-items .service-right .main {
+    width: 505px;
+    height: 579px;
+    position: relative;
+}
+
+.services-items .service-right .main .back {
+    border-radius: 16px;
+    width: 80%;
+    height: 100%;
+    background: #262626;
+    max-width: 467px;
+    max-height: 579px;
+}
+
+.services-items .service-right .main .circles>div {
+    border-radius: 100%;
+    background-color: var(--white);
+    width: 16px;
+    height: 16px;
+}
+
+.services-items .service-right .main .bg {
+    border-radius: 32px;
+    max-width: 505px;
+    width: 100%;
+    height: 100%;
+    background: #747474;
+    max-height: 511px;
+    position: absolute;
+    overflow: hidden;
+}
+
+.services-items .service-right .main .bg a svg {
+    transition: transform 0.5s ease;
+}
+
+.services-items .service-right .main .bg a:hover svg {
+    transform: rotate(50deg);
+}
+
+.services-items .service-right .main .bg a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Our Projects */
+#project .best-projects article .image {
+    position: relative;
+    border-radius: 38px;
+    max-width: 560px;
+    height: 598px;
+    width: 100%;
+    background-color: var(--load_bg);
+    margin-bottom: 28px;
+}
+
+#project .best-projects article .image img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.3s all;
+}
+
+#project .best-projects article .info h3 {
+    font-weight: 500;
+    font-size: 34px;
+    color: var(--white);
+}
+
+#project .best-projects article .info p {
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    margin: 12px 0;
+    color: var(--grey);
+    max-width: 560px;
+}
+
+#project .best-projects article .info .item-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 560px;
+    width: 100%;
+}
+
+#project .best-projects article .info .item-bottom .technology>div {
+    padding: 8px 18px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 22px;
+    border: 2px solid var(--white);
+}
+
+#project .best-projects article .info .item-bottom a {
+    padding: 10px 28px;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 23px;
+}
+
+/* Contact us */
+#contact h1 {
+    max-width: 953px;
+    width: 90%;
+}
+
+#contact p {
+    color: var(--grey);
+    width: 90%;
+    margin: 24px auto;
+}
+
+/* Footer */
+footer .footer-links .footer-link ul li {
+    margin-bottom: 8px;
+}
+
+footer .footer-links .footer-link ul li a {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--grey);
+}
+
+/* Responcive */
+@media (max-width: 1220px) {
+    .header-content .header-info h1 {
+        font-size: 60px;
+        width: 770px;
+    }
+
+    /* Services */
+    .services-items .service-right .main {
+        width: 430px;
+        height: 500px;
+    }
+
+    .services-items .service-right .main .bg {
+        width: 96%;
+        height: 82%;
+    }
+}
+
+@media (max-width: 1020px) {
+
+    /* General */
+    .about-content h1, .service-content .top h1 {
+        font-size: 40px;
+    }
+
+    /* Services */
+    .service-content .top h1 {
+        max-width: 300px;
+    }
+
+    .service-content .top p {
+        max-width: 368px;
+    }
+
+    /* Projects */
+    #project .best-projects article .info .item-bottom {
+        display: block;
+    }
+
+    #project .best-projects article .info .item-bottom a {
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content .header-info h1 {
+        width: 100%;
+    }
+
+    .header-content .header-info {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .header-content .header-info p {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .about-content p {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 482px) {
+
+    .header-content .header-info h1 {
+        font-size: 20px;
+    }
+
+    .header-content .header-info p {
+        font-size: 14px;
+        margin: 20px auto;
+    }
+
+    .header-content .header-info {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+    }
+
+    .about-content h1, .service-content .top h1, .services-items .service-left .service-name .content h2 {
+        font-size: 20px;
+    }
+
+    .about-cubs {
+        width: 145px;
+        height: 145px;
+    }
+
+    /* Services */
+    .services-items .service-right .main {
+        width: 86%;
+        height: 346px;
+    }
+
+    .services-items .service-left .service-name {
+        padding: 38px 40px;
+    }
+
+    .services-items .service-left .service-name:hover .content {
+        left: 18px;
+    }
+
+    .services-items .service-left .service-name .content p {
+        font-size: 14px;
+    }
+
+    .services-items .service-right .main .bg a svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    /* Projects */
+    #project .best-projects article .image {
+        height: 360px;
+    }
+
+    #project .best-projects article .info h3 {
+        font-size: 20px;
+    }
+
+    #project .best-projects article .info p {
+        font-size: 14px;
+    }
+
+    #project .best-projects article .info .item-bottom .technology>div {
+        font-size: 14px;
+    }
+}
