@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Elderdesk: The complete customer service solution{% endblock title %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="https://cdn.tailwindcss.com" defer></script>
+
+    {% block css %}{% endblock css %}
+  </head>
+
+  <body>
+
+    {% block content %} 
+    {% endblock content %}
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+    <!-- JavaScript -->
+    <script src="{% static 'js/base.js' %}"></script>
+
+  </body>
+</html>

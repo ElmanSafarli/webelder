@@ -1,0 +1,80 @@
+{% extends "_base.html" %}
+{% load socialaccount static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock css %}
+
+{% block content %}
+
+    <div class="page-wrapper">
+        <header>
+            <div class="home-banner relative flex items-center justify-center text-white text-[14px] py-[16px] px-[24px]">
+                <p class="mx-2"><strong class="mx-2">Elderdesk Support</strong>Get up to 15% off for your first three months.</p>
+                <a href="" target="_blank" class="mx-2 font-medium underline underline-offset-8">Register now</a>
+                <button class="absolute right-[24px]"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path vector-effect="non-scaling-stroke" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m2 13.964 12.021-12.02"></path><path vector-effect="non-scaling-stroke" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m2.098 1.998 12.02 12.021"></path></svg></button>
+            </div>
+            <nav class="top-navigation">
+                <div class=" flex items-end justify-end text-black gap-[16px]">
+                    <div><a href="" target="_blank">Sign in</a></div>
+                    <div><a href="" target="_blank">Product support</a></div>
+                    <div class="top-navigation-dropdown">
+                        <span class="top-navigation-dropdown-toggle">Language</span>
+                        <div class="top-navigation-dropdown-content flex flex-col gap-[8px]" style="display: none;">
+                            <div><a href="">Azerbaijan</a></div>
+                            <div><a href="">Russian</a></div>
+                            <div><a href="">English</a></div>
+                            <div><a href="">Turkish</a></div>
+                            <div><a href="">Spanish</a></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="bottom-navigation">
+                <div class="max-w-[1600px] w-full mx-auto flex items-center justify-between pt-[6px] pb-[14px]">
+                    <div class="bottom-navigation-logo"><img src="{% static 'assets/logo.jpg' %}" width="60px" height="60px" alt="Elderdesk" /></div>
+                    <div class="bottom-navigation-items">
+                        <ul class="flex items-center justify-center gap-[48px]">
+                            <li><a href="">Products</a></li>
+                            <li><a href="">Pricing</a></li>
+                            <li><a href="">Solutions</a></li>
+                            <li><a href="">Resurces</a></li>
+                        </ul>
+                    </div>
+                    <div class="bottom-navigation-btn"><a href="">Free Trial</a></div>
+                </div>    
+            </nav>
+        </header>
+        <main>
+            <section id="header" class="max-w-[1600px] w-full">
+
+                <div class="header-content relative flex flex-col justify-between gap-[24px] transition-all">
+                    <h1>Empowering Connections, Simplifying Business</h1>
+                    <p>At Elderdesk, we simplify business complexities, helping companies create meaningful customer connections and elevate everyday interactions into exceptional experiences.</p>
+                    <div class="flex gap-[12px] align-center">
+                        <a href="">Start your free trial</a>
+                        <a href="">View demo</a>
+                    </div>
+                </div>
+
+                {% comment %} <img src="{% static 'assets/home/header.png' %}" alt="header" /> {% endcomment %}
+
+            </section>
+            <section class="h-screen">
+            </section>
+            <section class="h-screen">
+            </section>
+        </main>
+    </div>
+
+    <h1>This is our home page.</h1>
+
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}!</p>
+        <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'account_login' %}">Log In</a>
+    {% endif %}
+
+{% endblock content %}
