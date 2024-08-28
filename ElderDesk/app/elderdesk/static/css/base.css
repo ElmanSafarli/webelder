@@ -1,31 +1,38 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-body{
-    font-family: 'Inter', sans-serif;  
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-:root{
+:root {
     --black: #0E0E0E;
     --white: #ffffff;
     --purple: #A846A0;
+
+    /* Dashboard */
+    --blue: #0A41A9;
+    --dark_blue: #272A40;
+    --border_grey: #D9D9D9;
+    --grey_font: #676767;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-ul{
+ul {
     list-style: none;
 }
 
-header{
+header {
     background-color: var(--white);
 }

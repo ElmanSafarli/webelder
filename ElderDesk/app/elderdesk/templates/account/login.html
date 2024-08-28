@@ -10,15 +10,17 @@
                     <h1 class="text-[36px] font-extrabold mb-[12px]">Welcome back!</h1>
                     <p class="text-[14px] mb-[26px]">Enter to get unlimited access to data  & information</p>
                     <form method="post">
-                        <p class="w-full mb-[18px] rounded-[6px] px-[14px] py-[12px] text-[#670E10] bg-[#FFBCBF] text-[14px]">
-                            {% csrf_token %}
-                            {{ form.non_field_errors.as_text }}
-                        </p>
+                        {% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <p class="w-full mb-[18px] rounded-[6px] px-[14px] py-[12px] text-[#670E10] bg-[#FFBCBF] text-[14px]">
+                                {{ form.non_field_errors.as_text }}
+                            </p>
+                        {% endif %}
                         <div class="flex flex-col gap-[10px] mb-[18px]">
                             <label for="id_login" class="">Email</label>
                             <input type="text" class="w-full rounded-[6px] h-[48px] border-2 border-[#D9D9D9] outline-[#5138EE] placeholder:text-[#676767] placeholder:text-[14px] placeholder:font-medium px-[14px]" id="id_login" aria-describedby="emailHelp"
                                 placeholder="Enter your mail adress" name="login">
-                            <p id="emailHelp" class="form-text error-text">
+                            <p id="emailHelp" class="text-[#670E10]">
                                 {{ form.login.errors.as_text }}
                             </p>
                         </div>
@@ -26,7 +28,7 @@
                             <label for="id_password" class="">Password</label>
                             <input type="password" class="w-full rounded-[6px] h-[48px] border-2 border-[#D9D9D9] outline-[#5138EE] placeholder:text-[#676767] placeholder:text-[14px] placeholder:font-medium px-[14px]" id="id_password" aria-describedby="passwordHelp"
                                 placeholder="Enter password" name="password">
-                            <p id="passwordHelp" class="form-text error-text">
+                            <p id="passwordHelp" class="text-[#670E10]">
                                 {{ form.password.errors.as_text }}
                             </p>
                         </div>

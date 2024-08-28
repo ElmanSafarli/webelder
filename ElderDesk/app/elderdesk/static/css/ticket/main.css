@@ -1,0 +1,320 @@
+.dashboard-layout {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--white);
+}
+
+.left-block {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background-color: var(--dark_blue);
+    z-index: 10;
+}
+
+.left-block nav>div button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 52px;
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    background: none;
+}
+
+.left-block nav>div img {
+    filter: brightness(0) invert(1);
+    width: 36px;
+}
+
+.left-block nav>div button:hover, .left-block nav>div button.active {
+    background-color: #3769D6;
+}
+
+.left-block nav>div button svg {
+    color: #787c91;
+}
+
+.left-block nav>div button:hover svg, .left-block nav>div button.active svg {
+    color: var(--white);
+}
+
+.top-block {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid var(--border_grey);
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    z-index: 2;
+}
+
+/* Profile */
+.dashboard_profile {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: var(--border_grey);
+    cursor: pointer;
+    margin-right: 32px;
+}
+
+
+.profile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 32px;
+    background-color: var(--white);
+    border: 1px solid var(--border_grey);
+    border-radius: 4px;
+    box-shadow: rgba(23, 73, 77, 0.15) 0px 20px 30px 0px;
+    z-index: 1000;
+    margin-top: 8px;
+    width: 300px;
+}
+
+.profile-menu .profile_info {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 18px;
+    margin: 4px 0;
+    padding: 0 34px;
+    transition: 0.3s all ease-in-out;
+}
+
+.profile_info:hover {
+    background-color: #EDF4F9;
+}
+
+.profile-menu .profile_info .profile-img {
+    width: 38px;
+    height: 38px;
+    background-color: var(--border_grey);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-menu .profile_info .profile-img img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s all;
+}
+
+.profile-menu .profile_info h3 {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--black);
+}
+
+.profile-menu .profile_info p {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--grey_font);
+}
+
+.profile-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+.profile-link {
+    display: block;
+    padding: 12px 34px;
+    color: var(--grey_font);
+    font-size: 14px;
+    transition: 0.3s all ease-in-out;
+    font-weight: 500;
+}
+
+.profile-link:hover {
+    background-color: #EDF4F9;
+}
+
+.profile-logut {
+    border-top: 1px solid var(--border_grey);
+    padding: 12px 34px;
+    color: var(--grey_font);
+    display: block;
+    transition: 0.3s all ease-in-out;
+    font-weight: 500;
+}
+
+.profile-logut:hover {
+    background-color: #EDF4F9;
+}
+
+/* Main */
+.main-block {
+    width: calc(100% - 60px);
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 40px 40px 0;
+}
+
+/* Clients and Organizations */
+.client_top, .organization_top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.client_top .client_top_left h1, .organization_top .organization_top_left h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.client_top .client_top_left p, .organization_top .organization_top_left p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey_font);
+}
+
+.client_top .client_top_right, .organization_top .organization_top_right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: end;
+}
+
+/* Add organization form */
+.shadow-background, .add-organization-form {
+    display: none;
+}
+
+.add-organization-form {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 384px;
+    width: 570px;
+    background-color: var(--white);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000
+}
+
+.shadow-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Shadow effect */
+    z-index: 1000;
+}
+
+
+.add-organization-form .close_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    width: 100%;
+    border-bottom: 1px solid var(--border_grey);
+}
+
+.add-organization-form .close_block h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.organization-form-close-btn {
+    padding: 12px;
+    background-color: var(--white);
+    border-radius: 50%;
+    transition: 0.3s all ease-in-out;
+}
+
+.organization-form-close-btn:hover {
+    background-color: #E6EFFF;
+}
+
+.organization-form-user_data {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 6px;
+    margin-top: 22px;
+}
+
+.organization-form-user_data label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.organization-form-user_data span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #717B85;
+}
+
+.organization-form-user_data input {
+    border: 1px solid var(--border_grey);
+    border-radius: 6px;
+    height: 42px;
+    width: 100%;
+    font-size: 13px;
+    color: var(--dark_blue);
+    font-weight: 400;
+    padding: 0 20px;
+    outline-color: var(--blue);
+    transition: 0.3s all ease-in-out;
+}
+
+.organization-form-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: absolute;
+    right: 40px;
+    bottom: 32px;
+    gap: 36px;
+}
+
+.organization-form-buttons button{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.organization-form-buttons button:first-child{ 
+    color: var(--blue);
+}
+
+.organization-form-buttons button:first-child:hover{
+    background-color: var(--white);
+}
+
+.organization-form-buttons button:last-child{ 
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 4px;
+    padding: 12px 32px;
+}

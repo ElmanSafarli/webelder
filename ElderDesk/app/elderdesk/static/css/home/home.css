@@ -1,5 +1,5 @@
 /* Home banner */
-.home-banner{
+.home-banner {
     background-color: var(--black);
 }
 
@@ -16,7 +16,7 @@ nav {
     margin: auto;
 }
 
-.top-navigation a, .top-navigation-dropdown-toggle { 
+.top-navigation a, .top-navigation-dropdown-toggle {
     color: var(--black);
     font-size: 14px;
     cursor: pointer;
@@ -26,32 +26,32 @@ nav {
     text-decoration: underline;
 }
 
-.top-navigation-dropdown-content{
+.top-navigation-dropdown-content {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 16px 24px;
     background-color: var(--white);
     padding: 24px 32px;
     -webkit-box-align: center;
     align-items: center;
     position: absolute;
-    right: 0; 
-    top: 100%; 
+    right: 0;
+    top: 100%;
     width: 220px;
-    z-index: 10; 
+    z-index: 10;
     margin-right: 10%;
     margin-top: 10px;
 }
 
 
-.top-navigation-dropdown-content>div a{
+.top-navigation-dropdown-content>div a {
     text-decoration: none;
 }
 
-.top-navigation-dropdown-content>div a:hover{
+.top-navigation-dropdown-content>div a:hover {
     text-decoration: underline;
 }
 
 /* Bottom Navigation */
-.bottom-navigation{
+.bottom-navigation {
     border-bottom: 1px solid #ded7cad9;
     transition: all 0.3s ease;
     width: 100%;
@@ -68,12 +68,12 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.13) 0px 8px 24px;
 }
 
-.bottom-navigation-items ul li a{
+.bottom-navigation-items ul li a {
     font-weight: 500;
     color: var(--black);
 }
 
-.bottom-navigation-btn a{
+.bottom-navigation-btn a {
     background-color: var(--purple);
     border-radius: 48px;
     padding: 10px 22px;
@@ -83,7 +83,7 @@ nav {
     transition: 0.3s all ease-in-out;
 }
 
-.bottom-navigation-btn a:hover{
+.bottom-navigation-btn a:hover {
     background-color: var(--white);
     color: var(--purple);
 }
@@ -95,7 +95,7 @@ nav {
     position: relative;
 }
 
-#header img{
+#header img {
     position: absolute;
     right: 0;
     bottom: -6px;
@@ -107,7 +107,7 @@ nav {
     z-index: 2;
 }
 
-.header-content h1{
+.header-content h1 {
     font-weight: 700;
     font-size: 58px;
     line-height: 128%;
@@ -125,7 +125,7 @@ nav {
     width: 80%;
 }
 
-.header-content>div a{
+.header-content>div a {
     padding: 12px 24px;
     border-radius: 48px;
     font-weight: 500;
@@ -133,24 +133,24 @@ nav {
     transition: 0.3s all ease-in-out;
 }
 
-.header-content>div a:first-child{
+.header-content>div a:first-child {
     color: var(--white);
     background-color: var(--purple);
     border: 2px solid var(--purple);
 }
 
-.header-content>div a:first-child:hover{
+.header-content>div a:first-child:hover {
     background-color: var(--white);
     color: var(--purple);
 }
 
-.header-content>div a:last-child{
+.header-content>div a:last-child {
     color: var(--black);
     background-color: var(--white);
     border: 2px solid var(--black);
 }
 
-.header-content>div a:last-child:hover{
+.header-content>div a:last-child:hover {
     background-color: var(--black);
     color: var(--white);
 }
