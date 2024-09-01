@@ -1,27 +1,11 @@
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView, CreateView
-from .models import Organization, UserProfile
-from .forms import OrganizationForm, UserProfileForm
+from django.shortcuts import redirect
+from django.views.generic import DetailView
+from .models import Organization
+from .forms import UserProfileForm
 
-# View to display the list of organizations
-class OrganizationListView(ListView):
-    model = Organization
-    template_name = 'organization/organization_list.html'
-    context_object_name = 'organizations'
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = OrganizationForm()
-        return context
+from django.http import JsonResponse
 
-    def post(self, request, *args, **kwargs):
-        form = OrganizationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('organization_list')  
-        context = self.get_context_data()
-        context['form'] = form
-        return self.render_to_response(context)
+from organizations.services import get_all_organizations
 
 # View to display the details of a single organization
 class OrganizationDetailView(DetailView):
@@ -45,3 +29,8 @@ class OrganizationDetailView(DetailView):
             if created:
                 return redirect('organization_detail', pk=organization.pk)
         return self.render_to_response(self.get_context_data(form=form))
+
+def get_organizations(request):
+    organizations = get_all_organizations()
+    data = [{"name": org.name} for org in organizations]
+    return JsonResponse({"organizations": data})

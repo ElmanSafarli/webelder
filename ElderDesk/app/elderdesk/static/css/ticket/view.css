@@ -1,0 +1,193 @@
+.views-main-pane{
+    height: 100%;
+    display: grid !important;
+    grid-template-columns: 330px auto;
+    transition: grid-template-columns 0.3s ease;
+}
+
+.views-main-pane.hidden {
+    grid-template-columns: 30px auto; 
+}
+
+.views-pane-organizations {
+    border-inline-end: 2px solid #d8dcde;
+    background-color: var(--white);
+    padding-block-start: 7px;
+    display: flex !important;
+    align-items: start;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0); 
+    opacity: 1;
+    width: 330px;
+}
+
+.views-pane-organizations.hidden {
+    transform: translateX(-300px); 
+    opacity: 1;
+}
+
+.views-pane-organizations.hidden .views-pane-organizations-content,
+.views-pane-organizations.hidden .views-pane-organizations-list,
+.views-pane-organizations.hidden .views-pane-organizations-bottom { /* Add this line */
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.views-pane-organizations-content {
+    overflow-x: hidden;
+    width: 100%;
+    padding-top: 13px;
+    display: flex;
+    flex-direction: column;
+}
+
+.views-pane-organizations-header {
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    transition: 0.3s 0.4s;
+    margin: 0px 16px;
+    border-bottom: 1px solid var(--border_grey);
+}
+
+.views-pane-organizations-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.views-pane-organizations-header button{
+    background-color: transparent;
+    background: none;
+    border: none;
+}
+
+.views-pane-organizations-nav {
+    position: absolute;
+    left: 316px;
+    top: 10px;
+    display: block !important;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.views-pane-organizations-nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+}
+
+.views-pane-organizations-nav.hidden {
+    transform: translateX(-300px) rotate(180deg); 
+}
+
+.views-pane-organizations-list {
+    padding: 0px 0px 16px;
+    margin: 16px 16px 0px;
+    overflow-x: hidden;
+    overflow-y: scroll auto;
+    height: calc(100vh - 250px);
+}
+
+.views-pane-organizations-list::-webkit-scrollbar {
+    width: 4px; 
+}
+
+.views-pane-organizations-list::-webkit-scrollbar-track {
+    background: #f0f0f0; 
+}
+
+.views-pane-organizations-list::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 8px; 
+    border: 2px solid #f0f0f0; 
+}
+
+.views-pane-organizations-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555; 
+}
+
+.views-pane-organizations-list ul li a{
+    color: var(--black);
+}
+
+.views-pane-organizations-bottom ul li a{
+    color: var(--red_font);
+}
+
+.views-pane-organizations-list ul li a, .views-pane-organizations-bottom ul li a {
+    appearance: none;
+    background-color: inherit;
+    border-radius: 4px;  
+    display: flex;
+    height: 36px;
+    width: 100%;
+    font-weight: 400;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 8px 0px 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+}
+
+.views-pane-organizations-list ul li a:hover, .views-pane-organizations-bottom ul li a:hover {
+    background-color: var(--hover_blue);
+    font-weight: 500;
+}
+
+.views-pane-organizations-list-name {
+    padding-right: 5px;
+}
+
+.views-pane-organizations-list-count {
+    margin-left: 20px;
+    margin-right: 18px;
+}
+
+.views-pane-organizations-bottom{
+    height: 109px;
+    width: calc(100% - 32px);
+    background-color: var(--white);
+    margin: 0px 16px;
+    border-top: 1px solid var(--border_grey);
+    transition: 0.3s 0.4s;
+    padding: 8px 0px 4px;
+    position: absolute;
+    bottom: 0;
+}
+
+.views-pane-organizations-bottom ul li a div:last-child{
+    margin-left: 20px;
+    margin-right: 18px;
+}
+
+.skeleton-text_views__organization_name {
+    width: 80%;
+    height: 1.4rem;
+    border-radius: 0.25rem;
+}
+
+.skeleton-text_views__organization_count {
+    width: 10%;
+    height: 1.4rem;
+    border-radius: 0.25rem;
+}
+
+#reload-button-view-organizations {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    background: none;
+}

@@ -13,8 +13,13 @@
     />
 
     <!-- CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
     {% block css %}{% endblock css %}
   </head>
@@ -32,6 +37,7 @@
 
     <!-- JavaScript -->
     <script src="{% static 'js/base.js' %}"></script>
+    {% block js %}{% endblock js %}
 
   </body>
 </html>

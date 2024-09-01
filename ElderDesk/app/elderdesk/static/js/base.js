@@ -61,4 +61,11 @@ $(document).ready(function(){
             $('#profile-menu').slideUp(300);
         }
     });
+    
+   
+    $('#search-toggle').on('click', function() {
+        $('.dashboard_search section').toggleClass('searchtoggle');
+        $('.dashboard_search-input').toggleClass('searchtoggle');
+    });
+
 });

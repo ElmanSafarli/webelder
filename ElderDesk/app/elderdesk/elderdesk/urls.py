@@ -6,6 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # User management
     path('accounts/', include('allauth.urls')),
+    path('silk/', include('silk.urls', namespace='silk')),
     # Local apps
     path('', include('pages.urls')),
     path('dashboard/', include('tickets.urls')),

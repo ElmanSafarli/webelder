@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'allauth', 
     'allauth.account', 
     'allauth.socialaccount',
+    'silk',
 
     # apps
     'accounts.apps.AccountsConfig',
@@ -43,7 +44,10 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    # third party 
+    'silk.middleware.SilkyMiddleware',
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

@@ -1,26 +1,116 @@
-{% extends "_base.html" %}
-{% load crispy_forms_tags %}
-
-{% block title %}Organizations{% endblock title %}
-
-{% block content %}
-    <div class="container mt-5">
-        <h2>Organizations</h2>
-        <ul>
-            {% for organization in organizations %}
-                <li>
-                    <a href="{% url 'organization_detail' organization.pk %}">{{ organization.name }}</a>
-                </li>
-            {% empty %}
-                <li>No organizations found.</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Add New Organization</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button class="btn btn-primary" type="submit">Add Organization</button>
-        </form>
-    </div>
-{% endblock content %}
+<div class="organization_top">
+  <div class="organization_top_left">
+    <h1>Organizations</h1>
+    <p>Add, search and manage organizations from one place.</p>
+  </div>
+  <div class="organization_top_right">
+    <button>Export</button>
+    <button
+      id="add-organization"
+      class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[170px] h-[40px]"
+    >
+      <svg
+        width="13"
+        height="14"
+        viewBox="0 0 13 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="5.13135"
+          y="0.5"
+          width="2.73684"
+          height="13"
+          rx="1.36842"
+          fill="white"
+        />
+        <rect
+          y="8.36844"
+          width="2.73684"
+          height="13"
+          rx="1.36842"
+          transform="rotate(-90 0 8.36844)"
+          fill="white"
+        />
+      </svg>
+      Add organization
+    </button>
+  </div>
+</div>
+<ul>
+  {% for organization in organizations %}
+  <li>
+    <a href="{% url 'organization_detail' organization.pk %}"
+      >{{ organization.name }}</a
+    >
+  </li>
+  {% empty %}
+  <li>No organizations found.</li>
+  {% endfor %}
+</ul>
+<div class="shadow-background"></div>
+<div class="add-organization-form">
+  <div class="close_block">
+    <h3>Add New Organization</h3>
+    <button class="organization-form-close-btn">
+      <svg
+        width="13"
+        height="13"
+        viewBox="0 0 13 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="1.41431"
+          width="16"
+          height="2"
+          rx="1"
+          transform="rotate(45 1.41431 0)"
+          fill="#68737D"
+        />
+        <rect
+          y="11.3137"
+          width="16"
+          height="2"
+          rx="1"
+          transform="rotate(-45 0 11.3137)"
+          fill="#68737D"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="organization-form">
+    <form method="post">
+      {% csrf_token %}
+      <div class="organization-form-user_data">
+        <label id="add_organization_name">Name</label>
+        <input
+          type="text"
+          name="add_organization_name"
+          value="{{ organization_form.name.value|default_if_none:'' }}"
+          required
+        />
+      </div>
+      <div class="organization-form-user_data">
+        <label id="add_organization_domains">Domains</label>
+        <span
+          >Enter domains separated by spaces. For example, "acme.com ajax.com".
+          Email addresses from these domains will be added to the
+          organization.</span
+        >
+        <input
+          type="text"
+          name="add_organization_domains"
+          value="{{ organization_form.domains.value|default_if_none:'' }}"
+          required
+        />
+      </div>
+      <div class="organization-form-buttons">
+        <button type="button" class="organization-form-close-btn">
+          Cancel
+        </button>
+        <button type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

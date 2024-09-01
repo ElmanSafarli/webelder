@@ -1,144 +1,412 @@
-{% extends "_base.html" %}
+{% extends "_base.html" %} 
 {% load socialaccount crispy_forms_tags static %}
 
-{% block title %}Dashboard{% endblock title %}
+{% block title %}Dashboard{% endblock title %} 
 
-{% block css %}<link rel="stylesheet" href="{% static 'css/ticket/main.css' %}">{% endblock css %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/ticket/main.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ticket/view.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ticket/navbar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ticket/search.css' %}" />
+{% endblock css %} 
 
 {% block content %}
 <section class="dashboard-layout">
-    <div class="left-block">
-        <nav>
-            <div class="h-[52px] w-full flex items-center justify-center mb-[16px] mt-[10px]"><img src="{% static 'assets/logoicon.png' %}" alt="logoImg"></div>
-            <div><button id="home" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" d="m23.885 13.2-1.328 1.639a.522.522 0 0 1-.737.084l-1.444-1.155v7.182c0 .577-.474 1.05-1.054 1.05H16.51c-.58 0-1.054-.473-1.054-1.05v-3.182a2.43 2.43 0 0 0-.716-1.732 2.448 2.448 0 0 0-1.74-.714 2.45 2.45 0 0 0-1.739.714 2.43 2.43 0 0 0-.716 1.732v3.182c0 .577-.474 1.05-1.054 1.05H6.678c-.582 0-1.054-.47-1.054-1.05v-7.182L4.18 14.923a.522.522 0 0 1-.737-.084L2.115 13.2a.52.52 0 0 1 .084-.735l10.474-8.348a.51.51 0 0 1 .654 0L23.8 12.466a.52.52 0 0 1 .084.735"></path></svg></button></div>
-            <div><button id="views" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" d="M20.007 4H5.993A.993.993 0 0 0 5 4.988v8.788a.49.49 0 0 0 .496.494h2.73a.49.49 0 0 1 .496.494v.742a.49.49 0 0 0 .496.494h7.564a.49.49 0 0 0 .496-.494v-.742a.49.49 0 0 1 .496-.494h2.978a.252.252 0 0 0 .248-.247V4.988A.993.993 0 0 0 20.007 4zM9.798 8C9.362 8 9 7.563 9 7.011V6.99c0-.553.362-.99.798-.99h6.395c.445 0 .807.448.807 1s-.362 1-.807 1H9.798zm0 4C9.362 12 9 11.563 9 11.011v-.022c0-.552.362-.989.798-.989h6.395c.445 0 .807.448.807 1s-.362 1-.807 1H9.798zM21 16.52v4.46c0 .56-.447 1.02-.993 1.02H5.993C5.447 22 5 21.54 5 20.98v-4.47c0-.281.222-.51.496-.51h.993c.278 0 .496.224.496.51v.766c0 .285.218.51.496.51H18.52a.504.504 0 0 0 .496-.51v-.756c0-.286.227-.52.506-.52h.973c.278 0 .506.234.506.52"></path></svg></button></div>
-            <div><button id="clients" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" d="M23.99 20.072c.082.49-.344.928-.878.928h-5.89a.477.477 0 0 1-.485-.555 2.16 2.16 0 0 0 .001-.704 7.74 7.74 0 0 0-1.63-3.63c-.21-.256-.103-.618.223-.731a6.887 6.887 0 0 1 2.265-.38c3.232 0 5.914 2.194 6.394 5.072M21 10.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0M8 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-6.03 8.073c-.583 0-1.048-.518-.96-1.093A7.072 7.072 0 0 1 8 14a7.072 7.072 0 0 1 6.989 5.98c.09.575-.376 1.093-.958 1.093H1.97z"></path></svg></button></div>
-            <div><button id="organizations" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" fill-rule="evenodd" d="M2 22V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1ZM8 6H5v3h3V6Zm-3 5h3v3H5v-3Zm8-5h-3v3h3V6Zm-3 5h3v3h-3v-3ZM17 7h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6V7Zm5 4h-3v3h3v-3Zm-3 5h3v3h-3v-3Z" clip-rule="evenodd"></path></svg></button></div>
-            <div><button id="statistics" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" d="M20.037 21.001 17.963 21c-.532-.001-.963-.449-.963-1.003V6.002c0-.554.431-1.003.963-1.002l2.078.001c.53 0 .959.448.959 1v13.998c0 .553-.431 1.002-.963 1.002M8.043 21H5.957C5.428 21 5 20.554 5 20.003v-7.006c0-.551.428-.997.957-.997h2.086c.529 0 .957.446.957.997v7.006c0 .551-.428.997-.957.997m5.999 0h-2.084a.958.958 0 0 1-.958-.958V9.958c0-.529.43-.958.958-.958h2.084c.529 0 .958.43.958.958v10.084c0 .529-.43.958-.958.958"></path></svg></button></div>
-            <div><button id="settings" class="btn_dashboard"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true" focusable="false" data-garden-id="chrome.nav_item_icon" data-garden-version="8.76.2"><path fill="currentColor" d="M13 16.627a3.625 3.625 0 0 1-3.63-3.622A3.633 3.633 0 0 1 13 9.373a3.633 3.633 0 0 1 3.63 3.632A3.625 3.625 0 0 1 13 16.627m8.295-4.902h-.006a2.116 2.116 0 0 1-1.955-1.307l-.031-.075a2.117 2.117 0 0 1 .459-2.306.693.693 0 0 0 0-.998l-.809-.809a.71.71 0 0 0-.997 0 2.106 2.106 0 0 1-2.295.457l-.08-.033a2.109 2.109 0 0 1-1.302-1.948.705.705 0 0 0-.705-.706h-1.148a.705.705 0 0 0-.705.706c0 .855-.514 1.628-1.306 1.95-.021.009-.043.017-.063.027a2.106 2.106 0 0 1-2.308-.453.72.72 0 0 0-1.006 0l-.81.81a.708.708 0 0 0 0 .997l.007.006a2.11 2.11 0 0 1 .454 2.305c-.01.022-.018.045-.028.066a2.103 2.103 0 0 1-1.95 1.311h-.006a.706.706 0 0 0-.705.706v1.138c0 .39.316.706.705.706h.002a2.1 2.1 0 0 1 1.949 1.306l.029.069a2.11 2.11 0 0 1-.452 2.31l-.004.003a.708.708 0 0 0 0 .998l.809.809a.72.72 0 0 0 1.006 0l.005-.005a2.106 2.106 0 0 1 2.307-.452l.059.024a2.104 2.104 0 0 1 1.306 1.95v.007c0 .395.32.706.705.706h1.148c.385 0 .705-.31.705-.706v-.007c0-.855.514-1.627 1.306-1.95l.059-.024a2.106 2.106 0 0 1 2.307.452l.005.005a.71.71 0 0 0 .997 0l.809-.81a.693.693 0 0 0 0-.997l-.004-.003a2.11 2.11 0 0 1-.452-2.31l.029-.069a2.102 2.102 0 0 1 1.948-1.306h.012a.706.706 0 0 0 .705-.706v-1.138a.706.706 0 0 0-.705-.706"></path></svg></button></div>
-        </nav>
-    </div>
-    <div class="top-block">
-        <div class="dashboard_search">
-            <button><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="6" cy="6" r="5.5" fill="none" stroke="currentColor"></circle><path stroke="currentColor" stroke-linecap="round" d="m15 15-5-5"></path></svg></button>
-            <input type="text" placeholder="Search">
-        </div>
-        <div class="dashboard_profile">
-            <button aria-label="Click the profile icon to open the profile menu." id="profile-button">
-                <img src="https://media.licdn.com/dms/image/C560BAQE0S6i3Zmh4XA/company-logo_200_200/0/1631679477228?e=2147483647&v=beta&t=0BazXyV7YSv-T1fpqIfFUI0bgAs7YD-KkFhd-SxhU0c" alt="Profile">
+  <div class="left-block">
+    <nav>
+      <div
+        class="h-[52px] w-full flex items-center justify-center mb-[16px] mt-[10px]"
+      >
+        <img src="{% static 'assets/logoicon.png' %}" alt="logoImg" />
+      </div>
+      <div>
+        <button id="home" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              d="m23.885 13.2-1.328 1.639a.522.522 0 0 1-.737.084l-1.444-1.155v7.182c0 .577-.474 1.05-1.054 1.05H16.51c-.58 0-1.054-.473-1.054-1.05v-3.182a2.43 2.43 0 0 0-.716-1.732 2.448 2.448 0 0 0-1.74-.714 2.45 2.45 0 0 0-1.739.714 2.43 2.43 0 0 0-.716 1.732v3.182c0 .577-.474 1.05-1.054 1.05H6.678c-.582 0-1.054-.47-1.054-1.05v-7.182L4.18 14.923a.522.522 0 0 1-.737-.084L2.115 13.2a.52.52 0 0 1 .084-.735l10.474-8.348a.51.51 0 0 1 .654 0L23.8 12.466a.52.52 0 0 1 .084.735"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button id="views" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              d="M20.007 4H5.993A.993.993 0 0 0 5 4.988v8.788a.49.49 0 0 0 .496.494h2.73a.49.49 0 0 1 .496.494v.742a.49.49 0 0 0 .496.494h7.564a.49.49 0 0 0 .496-.494v-.742a.49.49 0 0 1 .496-.494h2.978a.252.252 0 0 0 .248-.247V4.988A.993.993 0 0 0 20.007 4zM9.798 8C9.362 8 9 7.563 9 7.011V6.99c0-.553.362-.99.798-.99h6.395c.445 0 .807.448.807 1s-.362 1-.807 1H9.798zm0 4C9.362 12 9 11.563 9 11.011v-.022c0-.552.362-.989.798-.989h6.395c.445 0 .807.448.807 1s-.362 1-.807 1H9.798zM21 16.52v4.46c0 .56-.447 1.02-.993 1.02H5.993C5.447 22 5 21.54 5 20.98v-4.47c0-.281.222-.51.496-.51h.993c.278 0 .496.224.496.51v.766c0 .285.218.51.496.51H18.52a.504.504 0 0 0 .496-.51v-.756c0-.286.227-.52.506-.52h.973c.278 0 .506.234.506.52"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button id="clients" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              d="M23.99 20.072c.082.49-.344.928-.878.928h-5.89a.477.477 0 0 1-.485-.555 2.16 2.16 0 0 0 .001-.704 7.74 7.74 0 0 0-1.63-3.63c-.21-.256-.103-.618.223-.731a6.887 6.887 0 0 1 2.265-.38c3.232 0 5.914 2.194 6.394 5.072M21 10.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0M8 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-6.03 8.073c-.583 0-1.048-.518-.96-1.093A7.072 7.072 0 0 1 8 14a7.072 7.072 0 0 1 6.989 5.98c.09.575-.376 1.093-.958 1.093H1.97z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button id="organizations" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            fill="none"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="M2 22V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-4a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1ZM8 6H5v3h3V6Zm-3 5h3v3H5v-3Zm8-5h-3v3h3V6Zm-3 5h3v3h-3v-3ZM17 7h6a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-6V7Zm5 4h-3v3h3v-3Zm-3 5h3v3h-3v-3Z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button id="statistics" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              d="M20.037 21.001 17.963 21c-.532-.001-.963-.449-.963-1.003V6.002c0-.554.431-1.003.963-1.002l2.078.001c.53 0 .959.448.959 1v13.998c0 .553-.431 1.002-.963 1.002M8.043 21H5.957C5.428 21 5 20.554 5 20.003v-7.006c0-.551.428-.997.957-.997h2.086c.529 0 .957.446.957.997v7.006c0 .551-.428.997-.957.997m5.999 0h-2.084a.958.958 0 0 1-.958-.958V9.958c0-.529.43-.958.958-.958h2.084c.529 0 .958.43.958.958v10.084c0 .529-.43.958-.958.958"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <button id="settings" class="btn_dashboard">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 26 26"
+            aria-hidden="true"
+            focusable="false"
+            data-garden-id="chrome.nav_item_icon"
+            data-garden-version="8.76.2"
+          >
+            <path
+              fill="currentColor"
+              d="M13 16.627a3.625 3.625 0 0 1-3.63-3.622A3.633 3.633 0 0 1 13 9.373a3.633 3.633 0 0 1 3.63 3.632A3.625 3.625 0 0 1 13 16.627m8.295-4.902h-.006a2.116 2.116 0 0 1-1.955-1.307l-.031-.075a2.117 2.117 0 0 1 .459-2.306.693.693 0 0 0 0-.998l-.809-.809a.71.71 0 0 0-.997 0 2.106 2.106 0 0 1-2.295.457l-.08-.033a2.109 2.109 0 0 1-1.302-1.948.705.705 0 0 0-.705-.706h-1.148a.705.705 0 0 0-.705.706c0 .855-.514 1.628-1.306 1.95-.021.009-.043.017-.063.027a2.106 2.106 0 0 1-2.308-.453.72.72 0 0 0-1.006 0l-.81.81a.708.708 0 0 0 0 .997l.007.006a2.11 2.11 0 0 1 .454 2.305c-.01.022-.018.045-.028.066a2.103 2.103 0 0 1-1.95 1.311h-.006a.706.706 0 0 0-.705.706v1.138c0 .39.316.706.705.706h.002a2.1 2.1 0 0 1 1.949 1.306l.029.069a2.11 2.11 0 0 1-.452 2.31l-.004.003a.708.708 0 0 0 0 .998l.809.809a.72.72 0 0 0 1.006 0l.005-.005a2.106 2.106 0 0 1 2.307-.452l.059.024a2.104 2.104 0 0 1 1.306 1.95v.007c0 .395.32.706.705.706h1.148c.385 0 .705-.31.705-.706v-.007c0-.855.514-1.627 1.306-1.95l.059-.024a2.106 2.106 0 0 1 2.307.452l.005.005a.71.71 0 0 0 .997 0l.809-.81a.693.693 0 0 0 0-.997l-.004-.003a2.11 2.11 0 0 1-.452-2.31l.029-.069a2.102 2.102 0 0 1 1.948-1.306h.012a.706.706 0 0 0 .705-.706v-1.138a.706.706 0 0 0-.705-.706"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div class="top-block">
+    <div class="dashboard_search">
+        <div class="dashboard_search-input">
+            <button id="search-toggle">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                aria-hidden="true"
+                focusable="false"
+                >
+                <circle
+                    cx="6"
+                    cy="6"
+                    r="5.5"
+                    fill="none"
+                    stroke="currentColor"
+                ></circle>
+                <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    d="m15 15-5-5"
+                ></path>
+                </svg>
             </button>
-            <div id="profile-menu" class="profile-menu">
-                <div class="profile_info">
-                    <div class="profile-img">
-                        <img src="https://media.licdn.com/dms/image/C560BAQE0S6i3Zmh4XA/company-logo_200_200/0/1631679477228?e=2147483647&v=beta&t=0BazXyV7YSv-T1fpqIfFUI0bgAs7YD-KkFhd-SxhU0c" alt="Profile">
-                    </div>
+            <div>
+                <input type="text" placeholder="Search in ElderDesk..." />
+            </div>
+        </div>
+        <section>
+            <div class="dashboard_search-scroll">
+                <div class="dashboard_search-results">
+                    <h3>Tickets</h3>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path fill="currentColor" d="M7.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708l-2-2a.5.5 0 0 1 0-.708ZM8.354 9.646l-2-2a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708-.708Z"></path><path fill="currentColor" fill-rule="evenodd" d="m15.707 6.707-9 9a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414c.308-.308.379-.596.365-.828a1.2 1.2 0 0 0-.365-.758 1.2 1.2 0 0 0-.758-.365c-.232-.014-.52.057-.828.365a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414c-.308.308-.379.596-.365.828a1.2 1.2 0 0 0 .365.758 1.2 1.2 0 0 0 .758.365c.232.014.52-.057.828-.365a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414ZM15 6l-9 9-1-1c1.999-2-1-5-3-3l-1-1 9-9 1 1c-2 2 1 5 3 3l1 1Z" clip-rule="evenodd"></path></svg>
+                            <div>
+                                <p>TTL - Kyrgyzstan Network - China Mobile - Direct/A2P - 21.08.2024</p>
+                                <p>21.08.2024 #3522</p>
+                            </div>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path fill="currentColor" d="M7.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708l-2-2a.5.5 0 0 1 0-.708ZM8.354 9.646l-2-2a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708-.708Z"></path><path fill="currentColor" fill-rule="evenodd" d="m15.707 6.707-9 9a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414c.308-.308.379-.596.365-.828a1.2 1.2 0 0 0-.365-.758 1.2 1.2 0 0 0-.758-.365c-.232-.014-.52.057-.828.365a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414c-.308.308-.379.596-.365.828a1.2 1.2 0 0 0 .365.758 1.2 1.2 0 0 0 .758.365c.232.014.52-.057.828-.365a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414ZM15 6l-9 9-1-1c1.999-2-1-5-3-3l-1-1 9-9 1 1c-2 2 1 5 3 3l1 1Z" clip-rule="evenodd"></path></svg>
+                            <div>
+                                <p>TTL - Kyrgyzstan Network - China Mobile - Direct/A2P - 21.08.2024</p>
+                                <p>21.08.2024 #3522</p>
+                            </div>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" aria-hidden="true" viewBox="0 0 16 16" focusable="false"><path fill="currentColor" d="M7.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708l-2-2a.5.5 0 0 1 0-.708ZM8.354 9.646l-2-2a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708-.708Z"></path><path fill="currentColor" fill-rule="evenodd" d="m15.707 6.707-9 9a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414c.308-.308.379-.596.365-.828a1.2 1.2 0 0 0-.365-.758 1.2 1.2 0 0 0-.758-.365c-.232-.014-.52.057-.828.365a1 1 0 0 1-1.414 0l-1-1a1 1 0 0 1 0-1.414l9-9a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414c-.308.308-.379.596-.365.828a1.2 1.2 0 0 0 .365.758 1.2 1.2 0 0 0 .758.365c.232.014.52-.057.828-.365a1 1 0 0 1 1.414 0l1 1a1 1 0 0 1 0 1.414ZM15 6l-9 9-1-1c1.999-2-1-5-3-3l-1-1 9-9 1 1c-2 2 1 5 3 3l1 1Z" clip-rule="evenodd"></path></svg>
+                            <div>
+                                <p>TTL - Kyrgyzstan Network - China Mobile - Direct/A2P - 21.08.2024</p>
+                                <p>Today #3522</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="dashboard_recently_searched">
+                    <h3>Recently searched</h3>
+                    <ul>
+                        <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0a8 8 0 1 1-8 8 .5.5 0 0 1 1 0 7 7 0 1 0 7-7c-1.752 0-3.25.644-4.45 1.842l1.304 1.304a.5.5 0 0 1-.268.847L4.5 5h-3a.5.5 0 0 1-.492-.41L1 4.5v-3a.5.5 0 0 1 .788-.41l.066.056.988.99C4.222.755 5.97 0 8 0zm-.5 4.5a.5.5 0 0 1 .492.41L8 5v3.359l2.812 2.25a.5.5 0 0 1 .128.628l-.05.075a.5.5 0 0 1-.627.128l-.075-.05-3-2.4a.5.5 0 0 1-.18-.3L7 8.6V5a.5.5 0 0 1 .5-.5z"></path></svg>                            <div>
+                                <p>3532 Example</p>
+                                <time datetime="">21.08.2024 #3522</time>
+                            </div>
+                        </li>
+                        <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0a8 8 0 1 1-8 8 .5.5 0 0 1 1 0 7 7 0 1 0 7-7c-1.752 0-3.25.644-4.45 1.842l1.304 1.304a.5.5 0 0 1-.268.847L4.5 5h-3a.5.5 0 0 1-.492-.41L1 4.5v-3a.5.5 0 0 1 .788-.41l.066.056.988.99C4.222.755 5.97 0 8 0zm-.5 4.5a.5.5 0 0 1 .492.41L8 5v3.359l2.812 2.25a.5.5 0 0 1 .128.628l-.05.075a.5.5 0 0 1-.627.128l-.075-.05-3-2.4a.5.5 0 0 1-.18-.3L7 8.6V5a.5.5 0 0 1 .5-.5z"></path></svg>                            <div>
+                                <p>This text which user searched</p>
+                                <time datetime="">21.08.2024 #3522</time>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="dashboard_search-all_results_link">
+                <button class="btn_dashboard" id="search">
                     <div>
-                        <h3>Elman Safarli</h3>
-                        <p>See profile</p>
+                        <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        aria-hidden="true"
+                        focusable="false"
+                        >
+                        <circle
+                            cx="6"
+                            cy="6"
+                            r="5.5"
+                            fill="none"
+                            stroke="currentColor"
+                        ></circle>
+                        <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            d="m15 15-5-5"
+                        ></path>
+                        </svg>
                     </div>
-                </div>
-                <ul>
-                    <li><a class="border-t-[1px] border-b-[1px] font-medium border-[#D9D9D9] text-[#676767] h-[46px] px-[34px] w-full flex items-center bg-transparent hover:bg-[#EDF4F9] transition-all" href="">Product update</a></li>
-                    <li><a href="" class="profile-link">Profile</a></li>
-                    <li><a href="" class="profile-link">Help Center Support</a></li>
-                    <li><a href="" class="profile-link">Send feedback</a></li>
-                    <li><a href="" class="profile-link">Version</a></li>
-                    <li><a href="" class="profile-logut">Logout</a></li>
-                </ul>
+                    <p>All search results</p>
+                </button>
             </div>
-        </div>
-
+        </section>    
     </div>
-    <div class="main-block">
-        <div class="main-content-section" id="home-section" style="display:none;">
-            Home
+    <div class="dashboard_profile">
+      <button
+        aria-label="Click the profile icon to open the profile menu."
+        id="profile-button"
+      >
+        <img
+          src="https://media.licdn.com/dms/image/C560BAQE0S6i3Zmh4XA/company-logo_200_200/0/1631679477228?e=2147483647&v=beta&t=0BazXyV7YSv-T1fpqIfFUI0bgAs7YD-KkFhd-SxhU0c"
+          alt="Profile"
+        />
+      </button>
+      <div id="profile-menu" class="profile-menu">
+        <div class="profile_info">
+          <div class="profile-img">
+            <img
+              src="https://media.licdn.com/dms/image/C560BAQE0S6i3Zmh4XA/company-logo_200_200/0/1631679477228?e=2147483647&v=beta&t=0BazXyV7YSv-T1fpqIfFUI0bgAs7YD-KkFhd-SxhU0c"
+              alt="Profile"
+            />
+          </div>
+          <div>
+            <h3>Elman Safarli</h3>
+            <p>See profile</p>
+          </div>
         </div>
-        <div class="main-content-section" id="views-section">
-            View
-        </div>
-        <div class="main-content-section" id="clients-section" style="display:none;">
-            <div class="client_top">
-                <div class="client_top_left">
-                    <h1>Clients</h1>
-                    <p>Add, search and manage clients (end users) from one central location.</p>
-                </div>
-                <div class="client_top_right">
-                    <button>Export</button>
-                    <button class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[116px] h-[40px]">
-                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5.13135" y="0.5" width="2.73684" height="13" rx="1.36842" fill="white" />
-                            <rect y="8.36844" width="2.73684" height="13" rx="1.36842" transform="rotate(-90 0 8.36844)" fill="white" />
-                        </svg>
-                        Add client
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="main-content-section" id="organizations-section" style="display:none;">
-            <div class="organization_top">
-                <div class="organization_top_left">
-                    <h1>Organizations</h1>
-                    <p>Add, search and manage organizations from one place.</p>
-                </div>
-                <div class="organization_top_right">
-                    <button>Export</button>
-                    <button id="add-organization" class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[170px] h-[40px]">
-                        <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="5.13135" y="0.5" width="2.73684" height="13" rx="1.36842" fill="white" />
-                            <rect y="8.36844" width="2.73684" height="13" rx="1.36842" transform="rotate(-90 0 8.36844)" fill="white" />
-                        </svg>
-                        Add organization
-                    </button>
-                </div>
-            </div>
-            <ul>
-                {% for organization in organizations %}
-                    <li>
-                        <a href="{% url 'organization_detail' organization.pk %}">{{ organization.name }}</a>
-                    </li>
-                {% empty %}
-                    <li>No organizations found.</li>
-                {% endfor %}
-            </ul>
-            <div class="shadow-background"></div>
-            <div class="add-organization-form">
-                <div class="close_block">
-                    <h3>Add New Organization</h3>
-                    <button class="organization-form-close-btn">
-                        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1.41431" width="16" height="2" rx="1" transform="rotate(45 1.41431 0)" fill="#68737D" />
-                            <rect y="11.3137" width="16" height="2" rx="1" transform="rotate(-45 0 11.3137)" fill="#68737D" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="organization-form">
-                    <form method="post">
-                        <div class="organization-form-user_data">
-                            <label id="add_organization_name">Name</label>
-                            <input type="text" name="add_organization_name">
-                        </div>
-                        <div class="organization-form-user_data">
-                            <label id="add_organization_domains">Domains</label>
-                            <span>Enter domains separated by spaces. For example, "acme.com ajax.com". Email addresses from these domains will be added to the organization.</span>
-                            <input type="text" name="add_organization_domains">
-                        </div>
-                        <div class="organization-form-buttons">
-                            <button class="organization-form-close-btn">Cancel</button>
-                            <button type="submit">Add</button>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>      
-
-            {% comment %} <form method="post">
-                {% csrf_token %}
-                {{ organization_form|crispy }}
-                <button class="btn btn-primary" type="submit">Add Organization</button>
-            </form> {% endcomment %}
-        </div>
+        <ul>
+          <li>
+            <a
+              class="border-t-[1px] border-b-[1px] font-medium border-[#D9D9D9] text-[#676767] h-[46px] px-[34px] w-full flex items-center bg-transparent hover:bg-[#EDF4F9] transition-all"
+              href=""
+              >Product update</a
+            >
+          </li>
+          <li><a href="" class="profile-link">Profile</a></li>
+          <li><a href="" class="profile-link">Help Center Support</a></li>
+          <li><a href="" class="profile-link">Send feedback</a></li>
+          <li><a href="" class="profile-link">Version</a></li>
+          <li><a href="" class="profile-logut">Logout</a></li>
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="main-block">
+    <div
+      class="main-content-section"
+      id="home-section"
+      style="display: none"
+    ></div>
+    <div class="main-content-section" id="views-section">
+      {% include 'ticket/sections/views.html' %}
+    </div>
+    <div
+      class="main-content-section"
+      id="clients-section"
+      style="display: none"
+    >
+      <div class="client_top">
+        <div class="client_top_left">
+          <h1>Clients</h1>
+          <p>
+            Add, search and manage clients (end users) from one central
+            location.
+          </p>
+        </div>
+        <div class="client_top_right">
+          <button>Export</button>
+          <button
+            class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[116px] h-[40px]"
+          >
+            <svg
+              width="13"
+              height="14"
+              viewBox="0 0 13 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="5.13135"
+                y="0.5"
+                width="2.73684"
+                height="13"
+                rx="1.36842"
+                fill="white"
+              />
+              <rect
+                y="8.36844"
+                width="2.73684"
+                height="13"
+                rx="1.36842"
+                transform="rotate(-90 0 8.36844)"
+                fill="white"
+              />
+            </svg>
+            Add client
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="main-content-section"
+      id="organizations-section"
+      style="display: none"
+    >
+      {% include 'organization/organization_list.html' %}
+    </div>
+    <div class="main-content-section" id="search-section" style="display: none">
+      {% include 'ticket/sections/search_page.html' %}
+    </div>
+  </div>
 </section>
 
+{% endblock content %} {% block js %}
+<script>
+$(document).ready(function() {
+  $("#reload-button-view-organizations").on("click", function () {
+    let skeletonHtml = Array(8)
+      .fill("")
+      .map(
+        () => `
+        <li>
+            <a>
+                <div class="views-pane-organizations-list-name skeleton skeleton-text_views__organization_name"></div>
+                <div class="views-pane-organizations-list-count skeleton skeleton-text_views__organization_count"></div>
+            </a>
+        </li>
+    `
+      )
+      .join("");
 
-{% endblock content %}
+    $("#organization-list ul").html(skeletonHtml);
+
+    setTimeout(function () {
+      $.ajax({
+        url: "{% url 'get_organizations' %}",
+        type: "GET",
+        success: function (response) {
+          let organizationHtml = "";
+          $.each(response.organizations, function (index, organization) {
+            organizationHtml += `
+                        <li>
+                            <a>
+                                <div class="views-pane-organizations-list-name">${organization.name}</div>
+                                <div class="views-pane-organizations-list-count">N/A</div>
+                            </a>
+                        </li>`;
+          });
+          $("#organization-list ul").html(organizationHtml);
+        },
+        error: function (xhr, status, error) {
+          console.error("Failed to fetch data:", error);
+          $("#organization-list ul").html(
+            "<li>Error loading organizations.</li>"
+          );
+        },
+      });
+    }, 500);
+  });
+
+    $('#toggle-organizations-block').on('click', function() {
+        $('.views-main-pane').toggleClass('hidden');
+        $('.views-pane-organizations').toggleClass('hidden');
+        $('.views-pane-organizations-nav').toggleClass('hidden');
+    });
+
+    });
+</script>
+
+{% endblock js %}
