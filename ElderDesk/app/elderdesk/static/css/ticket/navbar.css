@@ -13,10 +13,12 @@
     overflow: hidden;
     transition: 0.3s all ease-in-out;
     top: 60px;
+    display: none;
 }
 
 .dashboard_search section.searchtoggle {
     width: 480px !important;
+    display: block;
 }
 
 /* Search input */
