@@ -162,3 +162,43 @@
 .searchPage-filter-menu-dropdown-item-toggle svg.rotate-arrow {
     transform: rotate(180deg) !important;
 }
+
+/* Search Page Result Types */
+.search-result-type-group {
+    color: var(--grey_font);
+    display: block;
+    margin-bottom: 20px;
+    font-size: 14px;
+    position: relative;
+}
+
+.search-result-type-group::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--border_grey);
+    z-index: 1;
+}
+
+.search-result-type {
+    content: "";
+    display: inline-block;
+    position: relative;
+    transition: color 0.25s ease-in-out;
+    border-bottom: 3px solid var(--white);
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 28px 6px;
+    color: inherit;
+    margin-right: 6px;
+    z-index: 2;
+}
+
+.search-result-type:hover {
+    color: var(--blue);
+    border-bottom: 3px solid var(--blue);
+}

@@ -353,7 +353,10 @@
   </div>
 </section>
 
-{% endblock content %} {% block js %}
+{% endblock content %} 
+{% block js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+
 <script>
 $(document).ready(function() {
   $("#reload-button-view-organizations").on("click", function () {
@@ -399,14 +402,7 @@ $(document).ready(function() {
       });
     }, 500);
   });
-
-    $('#toggle-organizations-block').on('click', function() {
-        $('.views-main-pane').toggleClass('hidden');
-        $('.views-pane-organizations').toggleClass('hidden');
-        $('.views-pane-organizations-nav').toggleClass('hidden');
-    });
-
-    });
+});
 </script>
 
 {% endblock js %}

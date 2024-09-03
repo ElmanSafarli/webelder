@@ -6,6 +6,7 @@ from .forms import UserProfileForm
 from django.http import JsonResponse
 
 from organizations.services import get_all_organizations
+from django.db.models import Q
 
 # View to display the details of a single organization
 class OrganizationDetailView(DetailView):
@@ -31,6 +32,12 @@ class OrganizationDetailView(DetailView):
         return self.render_to_response(self.get_context_data(form=form))
 
 def get_organizations(request):
-    organizations = get_all_organizations()
+    search_query = request.GET.get('search', '')
+    
+    if search_query:
+        organizations = Organization.objects.filter(Q(name__icontains=search_query))
+    else:
+        organizations = Organization.objects.all()
+    
     data = [{"name": org.name} for org in organizations]
     return JsonResponse({"organizations": data})
