@@ -1,116 +1,224 @@
-<div class="organization_top">
-  <div class="organization_top_left">
-    <h1>Organizations</h1>
-    <p>Add, search and manage organizations from one place.</p>
-  </div>
-  <div class="organization_top_right">
-    <button>Export</button>
-    <button
-      id="add-organization"
-      class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[170px] h-[40px]"
-    >
-      <svg
-        width="13"
-        height="14"
-        viewBox="0 0 13 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+<div class="mt-[40px] px-[40px]">
+  <div class="organization_top">
+    <div class="organization_top_left">
+      <h1>Organizations</h1>
+      <p>Add, search and manage organizations from one place.</p>
+    </div>
+    <div class="organization_top_right">
+      <button>Export</button>
+      <button
+        id="add-organization"
+        class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[170px] h-[40px]"
       >
-        <rect
-          x="5.13135"
-          y="0.5"
-          width="2.73684"
-          height="13"
-          rx="1.36842"
-          fill="white"
-        />
-        <rect
-          y="8.36844"
-          width="2.73684"
-          height="13"
-          rx="1.36842"
-          transform="rotate(-90 0 8.36844)"
-          fill="white"
-        />
-      </svg>
-      Add organization
-    </button>
-  </div>
-</div>
-<ul>
-  {% for organization in organizations %}
-  <li>
-    <a href="{% url 'organization_detail' organization.pk %}"
-      >{{ organization.name }}</a
-    >
-  </li>
-  {% empty %}
-  <li>No organizations found.</li>
-  {% endfor %}
-</ul>
-<div class="shadow-background"></div>
-<div class="add-organization-form">
-  <div class="close_block">
-    <h3>Add New Organization</h3>
-    <button class="organization-form-close-btn">
-      <svg
-        width="13"
-        height="13"
-        viewBox="0 0 13 13"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="1.41431"
-          width="16"
-          height="2"
-          rx="1"
-          transform="rotate(45 1.41431 0)"
-          fill="#68737D"
-        />
-        <rect
-          y="11.3137"
-          width="16"
-          height="2"
-          rx="1"
-          transform="rotate(-45 0 11.3137)"
-          fill="#68737D"
-        />
-      </svg>
-    </button>
-  </div>
-  <div class="organization-form">
-    <form method="post">
-      {% csrf_token %}
-      <div class="organization-form-user_data">
-        <label id="add_organization_name">Name</label>
-        <input
-          type="text"
-          name="add_organization_name"
-          value="{{ organization_form.name.value|default_if_none:'' }}"
-          required
-        />
-      </div>
-      <div class="organization-form-user_data">
-        <label id="add_organization_domains">Domains</label>
-        <span
-          >Enter domains separated by spaces. For example, "acme.com ajax.com".
-          Email addresses from these domains will be added to the
-          organization.</span
+        <svg
+          width="13"
+          height="14"
+          viewBox="0 0 13 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-        <input
-          type="text"
-          name="add_organization_domains"
-          value="{{ organization_form.domains.value|default_if_none:'' }}"
-          required
-        />
-      </div>
-      <div class="organization-form-buttons">
-        <button type="button" class="organization-form-close-btn">
-          Cancel
-        </button>
-        <button type="submit">Add</button>
-      </div>
-    </form>
+          <rect
+            x="5.13135"
+            y="0.5"
+            width="2.73684"
+            height="13"
+            rx="1.36842"
+            fill="white"
+          />
+          <rect
+            y="8.36844"
+            width="2.73684"
+            height="13"
+            rx="1.36842"
+            transform="rotate(-90 0 8.36844)"
+            fill="white"
+          />
+        </svg>
+        Add organization
+      </button>
+    </div>
+  </div>
+
+  <div
+    class="organizationPage_search_form mt-[40px] mb-[20px] max-w-[450px] min-w-[400px]"
+  >
+    <div
+      class="w-full rounded-[4px] text-[14px] flex items-center overflow-hidden"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        focusable="false"
+        class="mr-[8px]"
+      >
+        <circle
+          cx="6"
+          cy="6"
+          r="5.5"
+          fill="none"
+          stroke="currentColor"
+        ></circle>
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          d="m15 15-5-5"
+        ></path>
+      </svg>
+      <input
+        type="text"
+        class="w-full min-h-[1em]"
+        placeholder="Search for an organization..."
+      />
+      <button
+        type="button"
+        class="w-[16px] h-[16px] min-w-[16px] ml-[8px] min-h-[16px]"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          focusable="false"
+          aria-label="x-icon"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            d="M3 13 13 3m0 10L3 3"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="count_organization"></div>
+
+  <div class="organizations-list-table">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <button
+              type="button"
+              data-sort="organization_name_sort"
+              class="font-semibold flex items-center"
+            >
+              Name
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                focusable="false"
+                viewBox="0 0 12 12"
+                aria-hidden="true"
+                class="ml-[16px]"
+              >
+                <path
+                  fill="currentColor"
+                  d="M10 5H2a.5.5 0 01-.46-.31.47.47 0 01.11-.54L5.29.5A1 1 0 016.7.5l3.65 3.65a.49.49 0 01.11.54A.51.51 0 0110 5z"
+                ></path>
+                <path
+                  d="M2 7a.5.5 0 00-.46.31.47.47 0 00.11.54L5.3 11.5a1 1 0 001.41 0l3.65-3.65a.49.49 0 00.11-.54A.53.53 0 0010 7z"
+                ></path>
+              </svg>
+            </button>
+          </th>
+          <th>Domains</th>
+          <th>Description</th>
+          <th>Created</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for organization in organizations %}
+        <tr>
+          <td>
+              <a href="{% url 'organization_detail' organization.pk %}">{{ organization.name|default:"-" }}</a>
+          </td>
+          <td>{{ organization.domains.split|join:", " }}</td>
+
+          <td>{{ organization.optional_info|default:"-" }}</td>
+          <td>
+            <time datetime="{{ organization.created_date|date:'Y-m-d' }}">{{ organization.created_date|date:'M. d, Y' }}</time>
+          </td>        
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4">No organizations found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="shadow-background"></div>
+
+  <div class="add-organization-form">
+    <div class="close_block">
+      <h3>Add New Organization</h3>
+      <button class="organization-form-close-btn">
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 13 13"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="1.41431"
+            width="16"
+            height="2"
+            rx="1"
+            transform="rotate(45 1.41431 0)"
+            fill="#68737D"
+          />
+          <rect
+            y="11.3137"
+            width="16"
+            height="2"
+            rx="1"
+            transform="rotate(-45 0 11.3137)"
+            fill="#68737D"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="organization-form">
+      <form method="post">
+        {% csrf_token %}
+        <div class="organization-form-user_data">
+          <label id="add_organization_name">Name</label>
+          <input
+            type="text"
+            name="add_organization_name"
+            value="{{ organization_form.name.value|default_if_none:'' }}"
+            required
+          />
+        </div>
+        <div class="organization-form-user_data">
+          <label id="add_organization_domains">Domains</label>
+          <span
+            >Enter domains separated by spaces. For example, "acme.com
+            ajax.com". Email addresses from these domains will be added to the
+            organization.</span
+          >
+          <input
+            type="text"
+            name="add_organization_domains"
+            value="{{ organization_form.domains.value|default_if_none:'' }}"
+            required
+          />
+        </div>
+        <div class="organization-form-buttons">
+          <button type="button" class="organization-form-close-btn">
+            Cancel
+          </button>
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -84,7 +84,7 @@
     top: 60px;
     right: 0;
     width: 500px;
-    z-index: 2;
+    z-index: 3;
     box-shadow: rgba(4, 68, 77, 0.15) 0px 12px 20px 0px;
     padding: 24px 30px;
 }
@@ -195,7 +195,7 @@
     padding: 10px 28px 6px;
     color: inherit;
     margin-right: 6px;
-    z-index: 2;
+    z-index: 1;
 }
 
 .search-result-type:hover {

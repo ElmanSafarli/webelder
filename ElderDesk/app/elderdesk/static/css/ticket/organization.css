@@ -1,0 +1,212 @@
+/* Organization Search Form */
+.organizationPage_search_form>div {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 0.714286em 0.857143em;
+    cursor: text;
+    border: 1px solid var(--border_grey);
+}
+
+.organizationPage_search_form>div input {
+    border: none;
+    background-color: transparent;
+    color: var(--black);
+    outline: none;
+}
+
+/* Organization Table */
+.organizations-list-table {
+    max-height: calc(-285px + 100vh);
+    overflow: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.organizations-list-table>table {
+    display: table;
+    border: none;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0px;
+    line-height: 20px;
+    border-collapse: collapse;
+    color: var(--black);
+    font-size: 14px;
+}
+
+.organizations-list-table>table thead tr {
+    height: 48px;
+    display: table-row;
+}
+
+.organizations-list-table>table thead tr th {
+    padding: 0px 12px;
+    position: sticky;
+    top: 0px;
+    vertical-align: middle;
+    z-index: 1;
+    width: 250px;
+    text-align: left;
+    background-color: var(--white);
+}
+
+.organizations-list-table>table thead tr th button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.organizations-list-table>table tbody tr {
+    height: 40px;
+    display: table-row;
+    border-bottom: 1px solid var(--border_grey);
+    vertical-align: top;
+    transition: 0.1s ease-in-out;
+    background-color: var(--white);
+}
+
+.organizations-list-table>table tbody tr:hover {
+    background-color: var(--hover_blue);
+}
+
+.organizations-list-table>table tbody tr td {
+    padding: 10px 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: table-cell;
+    transition: 0.;
+}
+
+.organizations-list-table>table tbody tr td a {
+    display: inline;
+    color: var(--blue);
+    background-color: transparent;
+    -webkit-font-smoothing: subpixel-antialiased;
+    outline-color: transparent;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+
+.organizations-list-table>table tbody tr td a:hover {
+    text-decoration: underline;
+}
+
+/* Add organization form */
+.shadow-background, .add-organization-form {
+    display: none;
+}
+
+.add-organization-form {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 384px;
+    width: 570px;
+    background-color: var(--white);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000
+}
+
+.shadow-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Shadow effect */
+    z-index: 1000;
+}
+
+
+.add-organization-form .close_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 40px;
+    width: 100%;
+    border-bottom: 1px solid var(--border_grey);
+}
+
+.add-organization-form .close_block h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.organization-form-close-btn {
+    padding: 12px;
+    background-color: var(--white);
+    border-radius: 50%;
+    transition: 0.3s all ease-in-out;
+}
+
+.organization-form-close-btn:hover {
+    background-color: #E6EFFF;
+}
+
+.organization-form-user_data {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    gap: 6px;
+    margin-top: 22px;
+}
+
+.organization-form-user_data label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.organization-form-user_data span {
+    font-weight: 400;
+    font-size: 12px;
+    color: #717B85;
+}
+
+.organization-form-user_data input {
+    border: 1px solid var(--border_grey);
+    border-radius: 6px;
+    height: 42px;
+    width: 100%;
+    font-size: 13px;
+    color: var(--dark_blue);
+    font-weight: 400;
+    padding: 0 20px;
+    outline-color: var(--blue);
+    transition: 0.3s all ease-in-out;
+}
+
+.organization-form-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: absolute;
+    right: 40px;
+    bottom: 32px;
+    gap: 36px;
+}
+
+.organization-form-buttons button {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.organization-form-buttons button:first-child {
+    color: var(--blue);
+}
+
+.organization-form-buttons button:first-child:hover {
+    background-color: var(--white);
+}
+
+.organization-form-buttons button:last-child {
+    color: var(--white);
+    background-color: var(--blue);
+    border-radius: 4px;
+    padding: 12px 32px;
+}
