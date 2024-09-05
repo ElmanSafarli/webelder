@@ -1,7 +1,6 @@
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from organizations.models import Organization
 from organizations.forms import OrganizationForm
 
 from organizations.services import get_all_organizations

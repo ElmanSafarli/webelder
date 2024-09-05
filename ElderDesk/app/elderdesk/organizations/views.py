@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.views.generic import DetailView
 from .models import Organization
 from .forms import UserProfileForm
-
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 
 from organizations.services import get_all_organizations
@@ -30,14 +30,35 @@ class OrganizationDetailView(DetailView):
             if created:
                 return redirect('organization_detail', pk=organization.pk)
         return self.render_to_response(self.get_context_data(form=form))
-
+    
 def get_organizations(request):
     search_query = request.GET.get('search', '')
+    page_number = request.GET.get('page', 1) 
     
     if search_query:
         organizations = Organization.objects.filter(Q(name__icontains=search_query))
     else:
         organizations = Organization.objects.all()
-    
-    data = [{"name": org.name} for org in organizations]
-    return JsonResponse({"organizations": data})
+
+    paginator = Paginator(organizations, 16)  
+    page_obj = paginator.get_page(page_number)
+
+    data = [
+        {
+            "name": org.name,
+            "domains": org.domains.split(),
+            "optional_info": org.optional_info,
+            "created_date": org.created_date.strftime('%b. %d, %Y') 
+        } for org in page_obj
+    ]
+
+    # Return the paginated data
+    return JsonResponse({
+        "organizations": data,
+        "has_previous": page_obj.has_previous(),
+        "has_next": page_obj.has_next(),
+        "current_page": page_obj.number,
+        "num_pages": paginator.num_pages,
+        "previous_page": page_obj.previous_page_number() if page_obj.has_previous() else None,
+        "next_page": page_obj.next_page_number() if page_obj.has_next() else None
+    })

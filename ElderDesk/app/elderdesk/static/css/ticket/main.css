@@ -219,3 +219,42 @@
     gap: 16px;
     justify-content: end;
 }
+
+/* Pagination */
+.pagination ul li {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 0px 6px;
+    height: 32px;
+    min-width: 32px;
+    max-width: 64px;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    color: var(--black);
+    border-radius: 4px;
+    transition: 0.3s all ease-in-out;
+    background-color: transparent;
+}
+
+.pagination ul li:first-child:hover,
+.pagination ul li:nth-child(2):hover,
+.pagination ul li:nth-last-child(2):hover,
+.pagination ul li:last-child:hover {
+    background-color: transparent;
+    color: inherit;
+}
+
+.pagination ul li:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.pagination ul li.active {
+    background-color: var(--black);
+    color: var(--white);
+}

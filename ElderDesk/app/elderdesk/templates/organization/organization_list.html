@@ -98,7 +98,7 @@
   <div class="count_organization"></div>
 
   <div class="organizations-list-table">
-    <table>
+    <table id="organization-list">
       <thead>
         <tr>
           <th>
@@ -133,25 +133,15 @@
         </tr>
       </thead>
       <tbody>
-        {% for organization in organizations %}
-        <tr>
-          <td>
-              <a href="{% url 'organization_detail' organization.pk %}">{{ organization.name|default:"-" }}</a>
-          </td>
-          <td>{{ organization.domains.split|join:", " }}</td>
-
-          <td>{{ organization.optional_info|default:"-" }}</td>
-          <td>
-            <time datetime="{{ organization.created_date|date:'Y-m-d' }}">{{ organization.created_date|date:'M. d, Y' }}</time>
-          </td>        
-        </tr>
-        {% empty %}
-        <tr>
-          <td colspan="4">No organizations found.</td>
-        </tr>
-        {% endfor %}
+       
       </tbody>
     </table>
+
+    <nav id="pagination_organization" class="pagination p-[20px] flex items-center justify-center">
+      <ul class="flex items-center justify-center m-0 p-0 ">
+      </ul>
+    </nav>
+  
   </div>
 
   <div class="shadow-background"></div>
