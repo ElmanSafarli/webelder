@@ -1,6 +1,8 @@
 from django.db import models
+import uuid
 
 class Organization(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=255, unique=True)
     domains = models.TextField(help_text="List of domains separated by spaces")
     optional_info = models.TextField(blank=True, null=True)

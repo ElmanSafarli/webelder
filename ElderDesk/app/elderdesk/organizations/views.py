@@ -45,10 +45,11 @@ def get_organizations(request):
 
     data = [
         {
+            "uuid": str(org.uuid),
             "name": org.name,
             "domains": org.domains.split(),
             "optional_info": org.optional_info,
-            "created_date": org.created_date.strftime('%b. %d, %Y') 
+            "created_date": org.created_date.strftime('%b. %d, %Y')
         } for org in page_obj
     ]
 

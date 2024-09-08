@@ -1,0 +1,100 @@
+{% extends "_base.html" %}
+
+{% block title %}Organization Detail{% endblock %}
+
+{% block content %}
+    {% comment %} <h1>{{ organization.name }}</h1>
+    <p>Domains: {{ organization.domains }}</p>
+    <p>Optional Info: {{ organization.optional_info }}</p>
+    <h2>Users</h2>
+    <ul>
+        {% for user in organization.user_profiles.all %}
+            <li>{{ user.name }} ({{ user.email }}) - {{ user.get_user_type_display }}</li>
+        {% empty %}
+            <li>No users found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add New User</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Add User</button>
+    </form> {% endcomment %}
+
+    <section class="dashboard-layout">
+  <div class="left-block">
+    {% include 'ticket/include/left_nav.html' %}
+  </div>
+  <div class="top-block">
+    {% include 'ticket/include/top_block.html' %}
+  </div>
+  <div class="main-block">
+    <div
+      class="main-content-section"
+      id="home-section"
+      style="display: none"
+    ></div>
+    <div class="main-content-section" id="views-section">
+      {% include 'ticket/sections/views.html' %}
+    </div>
+    <div
+      class="main-content-section"
+      id="clients-section"
+      style="display: none"
+    >
+      <div class="client_top">
+        <div class="client_top_left">
+          <h1>Clients</h1>
+          <p>
+            Add, search and manage clients (end users) from one central
+            location.
+          </p>
+        </div>
+        <div class="client_top_right">
+          <button>Export</button>
+          <button
+            class="flex items-center justify-center gap-[8px] bg-[#0A41A9] rounded-[6px] text-[14px] text-white w-[116px] h-[40px]"
+          >
+            <svg
+              width="13"
+              height="14"
+              viewBox="0 0 13 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="5.13135"
+                y="0.5"
+                width="2.73684"
+                height="13"
+                rx="1.36842"
+                fill="white"
+              />
+              <rect
+                y="8.36844"
+                width="2.73684"
+                height="13"
+                rx="1.36842"
+                transform="rotate(-90 0 8.36844)"
+                fill="white"
+              />
+            </svg>
+            Add client
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="main-content-section"
+      id="organizations-section"
+      style="display: none"
+    >
+      {% include 'ticket/organization/organization_list.html' %}
+    </div>
+    <div class="main-content-section" id="search-section" style="display: none">
+      {% include 'ticket/sections/search_page.html' %}
+    </div>
+  </div>
+</section>
+{% endblock %}
