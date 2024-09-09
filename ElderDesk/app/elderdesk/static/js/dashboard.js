@@ -163,7 +163,9 @@ $(document).ready(function () {
         search: $("#search-input").val(), // Optional: search term if applicable
       },
       success: function (response) {
-        // Render organization data in the table
+        var orgCount = response.organizations.length;
+        $(".count_organization").text(orgCount + " organizations");
+
         $("#organization-list tbody").empty();
         $.each(response.organizations, function (index, organization) {
           $("#organization-list tbody").append(`

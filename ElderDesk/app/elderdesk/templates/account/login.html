@@ -5,8 +5,8 @@
 {% block content %}
     <div class="login-page flex items-center justify-between h-screen w-full">
         <section class="flex w-full h-full">
-            <div class="flex flex-1 max-w-[50%] w-full h-full items-center ">
-                <div class="w-[70%] mx-20">
+            <div class="flex flex-1 max-w-[100%] lg:max-w-[50%] w-full h-full items-center ">
+                <div class="lg:w-[70%] w-[100%] mx-20">
                     <h1 class="text-[36px] font-extrabold mb-[12px]">Welcome back!</h1>
                     <p class="text-[14px] mb-[26px]">Enter to get unlimited access to data  & information</p>
                     <form method="post">
@@ -57,7 +57,7 @@
                     </form> 
                 </div>
             </div>    
-            <div class="flex-1 max-w-[50%] w-full overflow-hidden relative">
+            <div class="flex-1 hidden lg:block max-w-[50%] w-full overflow-hidden relative">
                 <img class="absolute top-0 left-0 bottom-0 w-full h-full transition-all object-cover" src="{% static 'assets/account/login.jpg' %}" alt="login image" />
             </div>
         </section>
