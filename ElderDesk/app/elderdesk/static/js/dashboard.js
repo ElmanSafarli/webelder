@@ -22,7 +22,7 @@ $(document).ready(function () {
     $resultContent.children().not($defaultBlock).show();
 
     $.ajax({
-      url: "/dashboard/organizations/get-organizations/",
+      url: "/dashboard/organizations/api/get-organizations/",
       method: "GET",
       data: { search: query },
       success: function (response) {
@@ -156,7 +156,7 @@ $(document).ready(function () {
 
   function loadOrganizations(page) {
     $.ajax({
-      url: "/dashboard/organizations/get-organizations/",
+      url: "/dashboard/organizations/api/get-organizations/",
       method: "GET",
       data: {
         page: page,
@@ -170,7 +170,7 @@ $(document).ready(function () {
         $.each(response.organizations, function (index, organization) {
           $("#organization-list tbody").append(`
                     <tr>
-                        <td><a href="#">${organization.name}</a></td>
+                        <td><a href="/dashboard/organizations/${organization.uuid}">${organization.name}</a></td>
                         <td>${organization.domains.join(", ")}</td>
                         <td>${organization.optional_info || "-"}</td>
                         <td><time>${organization.created_date}</time></td>

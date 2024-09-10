@@ -11,6 +11,7 @@ from django.db.models import Q
 # View to display the details of a single organization
 class OrganizationDetailView(DetailView):
     model = Organization
+    pk_url_kwarg = 'pk'
     template_name = 'organization/organization_detail.html'
     context_object_name = 'organization'
 
