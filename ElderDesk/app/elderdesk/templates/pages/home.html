@@ -1,12 +1,14 @@
 {% extends "_base.html" %}
-{% load socialaccount static %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
 {% block css %}<link rel="stylesheet" href="{% static 'css/home/home.css' %}">{% endblock css %}
 
 {% block content %}
-
+    <a href="{% url 'django_auth_adfs:logout' %}">Logout</a>
+    <a href="{% url 'django_auth_adfs:login' %}">Login</a>
+    <a href="{% url 'django_auth_adfs:login-no-sso' %}">Login (no SSO)</a>
     <div class="page-wrapper">
         <header>
             <div class="home-banner relative flex items-center justify-center text-white text-[14px] py-[16px] px-[24px]">
@@ -16,7 +18,7 @@
             </div>
             <nav class="top-navigation">
                 <div class=" flex items-end justify-end text-black gap-[16px]">
-                    <div><a href="{% url 'account_login' %}" target="_blank">Sign in</a></div>
+                    {% comment %} <div><a href="{% url 'account_login' %}" target="_blank">Sign in</a></div> {% endcomment %}
                     <div><a href="" target="_blank">Product support</a></div>
                     <div class="top-navigation-dropdown">
                         <span class="top-navigation-dropdown-toggle">Language</span>
@@ -69,12 +71,12 @@
 
     <h1>This is our home page.</h1>
 
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %}
         <p>Hi {{ user.username }}!</p>
         <p><a href="{% url 'account_logout' %}">Log Out</a></p>
     {% else %}
         <p>You are not logged in</p>
         <a href="{% url 'account_login' %}">Log In</a>
-    {% endif %}
+    {% endif %} {% endcomment %}
 
 {% endblock content %}

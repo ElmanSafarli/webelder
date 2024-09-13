@@ -22,11 +22,15 @@ INSTALLED_APPS = [
     'django.contrib.sites', 
 
     # third party
-    'crispy_forms',
-    'crispy_bootstrap5', 
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount',
+    # 'crispy_forms',
+    # 'crispy_bootstrap5', 
+    # 'allauth', 
+    # 'allauth.account', 
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.microsoft',
+
+    'django_auth_adfs',
+    
     'silk',
 
     # apps
@@ -48,6 +52,7 @@ MIDDLEWARE = [
     
     # third party 
     'silk.middleware.SilkyMiddleware',
+    'django_auth_adfs.middleware.LoginRequiredMiddleware',
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
@@ -87,7 +92,10 @@ DATABASES = {
 
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend", 
+    # "allauth.account.auth_backends.AuthenticationBackend", 
+    
+    'django_auth_adfs.backend.AdfsAuthCodeBackend',
+    'django_auth_adfs.backend.AdfsAccessTokenBackend',
 )
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -130,17 +138,42 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SITE_ID = 1
 
-# ACCOUNT_EMAIL_VERIFICATION = "none"
+# Microsoft Azure AD configuration
+AZURE_CLIENT_ID = os.environ.get('AZURE_CLIENT_ID')
+AZURE_TENANT_ID = os.environ.get('AZURE_TENANT_ID')
+AZURE_CLIENT_SECRET = os.environ.get('AZURE_CLIENT_SECRET')
+AZURE_REDIRECT_URI = os.environ.get('AZURE_REDIRECT_URI')
+AZURE_AUTHORITY = os.environ.get('AZURE_AUTHORITY')
+AZURE_SCOPES = os.environ.get('AZURE_SCOPES').split()
 
-ACCOUNT_USERNAME_REQUIRED = False 
-ACCOUNT_AUTHENTICATION_METHOD = "email"
-ACCOUNT_EMAIL_REQUIRED = True 
-ACCOUNT_UNIQUE_EMAIL = True
+AUTH_ADFS = {
+    'AUDIENCE': [f'api://{AZURE_CLIENT_ID}', AZURE_CLIENT_ID],
+    'CLIENT_ID': AZURE_CLIENT_ID,
+    'CLIENT_SECRET': AZURE_CLIENT_SECRET,
+    "CLAIM_MAPPING": {"first_name": "given_name",
+                      "last_name": "family_name",
+                      "email": "email"},
+    'GROUPS_CLAIM': 'roles',
+    'MIRROR_GROUPS': True,
+    'USERNAME_CLAIM': 'email',
+    'TENANT_ID': AZURE_TENANT_ID,
+    'RELYING_PARTY_ID': AZURE_CLIENT_ID,
+    'LOGIN_EXEMPT_URLS': [
+        '^api',  
+        '^$',
+        '^admin/',
+    ],
+}
 
-LOGIN_URL = 'accounts/login/'
+# ACCOUNT_USERNAME_REQUIRED = False 
+# ACCOUNT_AUTHENTICATION_METHOD = "email"
+# ACCOUNT_EMAIL_REQUIRED = True 
+# ACCOUNT_UNIQUE_EMAIL = True
+
+LOGIN_URL = "django_auth_adfs:login"
 LOGIN_REDIRECT_URL = "dashboard"
 LOGOUT_REDIRECT_URL = '/'
 
 # django-crispy-forms
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+# CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5" 
+# CRISPY_TEMPLATE_PACK = "bootstrap5"

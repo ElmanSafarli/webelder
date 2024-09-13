@@ -4,7 +4,7 @@ from .models import Organization
 from .forms import UserProfileForm
 from django.core.paginator import Paginator
 from django.http import JsonResponse
-
+from django.contrib.auth.decorators import login_required
 from organizations.services import get_all_organizations
 from django.db.models import Q
 
@@ -31,16 +31,18 @@ class OrganizationDetailView(DetailView):
             if created:
                 return redirect('organization_detail', pk=organization.pk)
         return self.render_to_response(self.get_context_data(form=form))
-    
+
+@login_required 
 def get_organizations(request):
     search_query = request.GET.get('search', '')
     page_number = request.GET.get('page', 1) 
     
+    user = request.user
     if search_query:
-        organizations = Organization.objects.filter(Q(name__icontains=search_query))
+        organizations = Organization.objects.filter(created_by=user, name__icontains=search_query)
     else:
-        organizations = Organization.objects.all()
-
+        organizations = Organization.objects.filter(created_by=user)
+        
     paginator = Paginator(organizations, 16)  
     page_obj = paginator.get_page(page_number)
 

@@ -214,7 +214,7 @@
         />
       </div>
       <div>
-        <h3>Elman Safarli</h3>
+        <h3>{{ first_name }} {{ last_name }}</h3>
         <p>See profile</p>
       </div>
     </div>
@@ -230,7 +230,7 @@
       <li><a href="" class="profile-link">Help Center Support</a></li>
       <li><a href="" class="profile-link">Send feedback</a></li>
       <li><a href="" class="profile-link">Version</a></li>
-      <li><a href="" class="profile-logut">Logout</a></li>
+      <li><a href="{% url 'django_auth_adfs:logout' %}" class="profile-logut">Logout</a></li>
     </ul>
   </div>
 </div>

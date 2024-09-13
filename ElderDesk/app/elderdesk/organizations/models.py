@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.conf import settings
 
 class Organization(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
@@ -8,6 +9,7 @@ class Organization(models.Model):
     optional_info = models.TextField(blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
