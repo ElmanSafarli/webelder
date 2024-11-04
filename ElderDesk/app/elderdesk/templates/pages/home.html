@@ -62,12 +62,30 @@
                 {% comment %} <img src="{% static 'assets/home/header.png' %}" alt="header" /> {% endcomment %}
 
             </section>
-            <section class="h-screen">
+
+            <section id="tour" class="max-w-[1600px] w-full m-auto px-[10%] py-[100px]">
+                <div class="flex flex-col gap-[70px]">
+                    <div class="flex items-center justify-between"> 
+                        <h2 class="text-[54px] font-bold pr-[12px]">Take a quick tour</h2>
+                        <p class="text-[17px] max-w-[612px] pl-[12px]">Experience Elderdesk like your agents will. Our customer service solution comes with everything you need to provide exceptional support.</p>
+                    </div>
+                    <div class="relative w-full h-[612px] overflow-hidden">
+                        <img src="{% static 'assets/home/tour.jpg' %}" class="w-full absolute top-0 left-0 object-cover" alt="tour" />
+                        <div class="flex flex-col gap-[18px] z-[2] absolute p-[28px] w-[340px] text-center bg-white" style="top: 50%; left: 50%; transform: translate(-50%, -50%);-webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center;box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;">
+                            <img src="{% static 'assets/home/bike-race-sport-illustration.png' %}" width="160px" height="160px" alt="tour" />
+                            <h4 class="text-[24px] font-semibold">See Elderdesk in action</h4>
+                            <p>Let's see how a furniture store provides great customer support with Elderdesk.</p>
+                            <a href="" class="px-[24px] py-[12px] rounded-[48px] text-[18px] bg-black text-white font-medium hover:bg-[#A846A0] hover:text-black transition-colors">Start tour</a>
+                        </div>
+                    </div>
+                </div>
             </section>
-            <section class="h-screen">
-            </section>
+            
         </main>
+        
     </div>
+
+    
 
     <h1>This is our home page.</h1>
 

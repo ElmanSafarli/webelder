@@ -94,7 +94,7 @@
 
 <script>
 $(document).ready(function() {
-  $("#reload-button-view-organizations").on("click", function () {
+  function loadOrganizations() {
     let skeletonHtml = Array(8)
       .fill("")
       .map(
@@ -105,7 +105,7 @@ $(document).ready(function() {
                 <div class="views-pane-organizations-list-count skeleton skeleton-text_views__organization_count"></div>
             </a>
         </li>
-    `
+      `
       )
       .join("");
 
@@ -119,12 +119,12 @@ $(document).ready(function() {
           let organizationHtml = "";
           $.each(response.organizations, function (index, organization) {
             organizationHtml += `
-                        <li>
-                            <a>
-                                <div class="views-pane-organizations-list-name">${organization.name}</div>
-                                <div class="views-pane-organizations-list-count">N/A</div>
-                            </a>
-                        </li>`;
+              <li>
+                  <a>
+                      <div class="views-pane-organizations-list-name">${organization.name}</div>
+                      <div class="views-pane-organizations-list-count">N/A</div>
+                  </a>
+              </li>`;
           });
           $("#organization-list ul").html(organizationHtml);
         },
@@ -136,6 +136,14 @@ $(document).ready(function() {
         },
       });
     }, 500);
+  }
+
+  // Load data on page load
+  loadOrganizations();
+
+  // Reload data when the button is clicked
+  $("#reload-button-view-organizations").on("click", function () {
+    loadOrganizations();
   });
 });
 </script>

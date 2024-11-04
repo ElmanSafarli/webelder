@@ -25,20 +25,7 @@
         </button>
       </div>
       <div class="views-pane-organizations-list" id="organization-list">
-        <ul>
-          {% for organization in organizations %}
-          <li>
-            <a>
-              <div class="views-pane-organizations-list-name">
-                {{ organization.name }}
-              </div>
-              <div class="views-pane-organizations-list-count">21</div>
-            </a>
-          </li>
-          {% empty %}
-          <li>No organizations found.</li>
-          {% endfor %}
-        </ul>
+        <ul></ul>
       </div>
     </div>
    
@@ -77,5 +64,11 @@
       </button>
     </div>
 
-  <div class="">dfdfdfd</div>
+  <div class="">
+    {% for email in emails %}
+      <p>{{ email.subject }}</p>
+      <p>{{ email.from.emailAddress.name }} ({{ email.from.emailAddress.address }})</p>
+      <p>{{ email.receivedDateTime }}</p>
+    {% endfor %}
+  </div>
 </div>

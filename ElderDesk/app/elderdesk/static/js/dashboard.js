@@ -262,4 +262,26 @@ n
   });
 
   loadOrganizations(1);
+
+  $('#organization-search').on('input', function () {
+    const searchTerm = $(this).val().toLowerCase();
+
+    $('#organization-list tbody tr').each(function () {
+      const organizationName = $(this).find('td:first-child a').text().toLowerCase();
+
+      if (organizationName.includes(searchTerm)) {
+        $(this).show(); 
+      } else {
+        $(this).hide(); 
+      }
+    });
+
+    const visibleOrganizations = $('#organization-list tbody tr:visible').length;
+    $('.count_organization').text(visibleOrganizations + ' organizations');
+  });
+
+  $('#clear-search').on('click', function () {
+    $('#organization-search').val(''); // Clear the search input
+    $('#organization-search').trigger('input'); // Trigger input event to reset the table
+  });
 });

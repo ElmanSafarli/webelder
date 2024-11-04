@@ -11,6 +11,8 @@ html {
 body {
     background-color: var(--black);
     overflow-x: hidden;
+    margin: auto !important;
+    max-width: 1920px;
 }
 
 :root {
@@ -250,6 +252,7 @@ body {
     width: 100%;
     background-color: var(--load_bg);
     margin-bottom: 28px;
+    overflow: hidden;
 }
 
 #project .best-projects article .image img {
@@ -257,6 +260,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: 0.3s all;
 }
@@ -459,6 +463,7 @@ footer .footer-links .footer-link ul li a {
     }
 
     #project .best-projects article .info .item-bottom .technology>div {
-        font-size: 14px;
+        font-size: 11px;
+        padding: 10px 14px;
     }
 }
